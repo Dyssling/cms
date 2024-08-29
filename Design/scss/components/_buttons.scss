@@ -1,0 +1,23 @@
+.btn{
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid;
+    padding: 15px 40px;
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+.menu-btn{
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.25s;
+    outline: none;
+    border: none;
+    height: 55px;
+    width: 55px;
+    font-size: 26px;
+    background-color: transparent;
+}

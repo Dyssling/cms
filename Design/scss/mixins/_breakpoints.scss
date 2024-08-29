@@ -1,0 +1,29 @@
+@mixin px1400{
+    @media (max-width: 1400px){
+        @content
+    }
+}
+
+@mixin px1200{
+    @media (max-width: 1200px){
+        @content
+    }
+}
+
+@mixin px992{
+    @media (max-width: 992px){
+        @content
+    }
+}
+
+@mixin px768{
+    @media (max-width: 768px){
+        @content
+    }
+}
+
+@mixin px576{
+    @media (max-width: 576px){
+        @content
+    }
+}

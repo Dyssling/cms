@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+@media (prefers-reduced-motion: no-preference){ //Om anvandaren inte har stallt in nagot annat pa webblasaren e scroll-behavior = smooth.
+    :root{
+        scroll-behavior: smooth;
+    }
+}
+
+html, body{
+    // background-color: white;
+
+    margin: 0;
+
+    @include standard-font;
+}
+
+input, button{
+    @include standard-font;
+}
+
+a{
+    text-decoration: none;
+}
+
+@import "../components/buttons";
+
+p{
+    margin: 0;
+}
+
+@include headings;
+
+img{
+    overflow: hidden;
+}
+
+@import "../components/wrapper";
