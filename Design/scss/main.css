@@ -30,6 +30,32 @@
   background-color: transparent;
 }
 
+.container {
+  width: 1170px;
+  margin: auto;
+}
+@media (max-width: 1400px) {
+  .container {
+    width: 950px;
+  }
+}
+@media (max-width: 1200px) {
+  .container {
+    width: 800px;
+  }
+}
+@media (max-width: 992px) {
+  .container {
+    width: 650px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 3%;
+  }
+}
+
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -130,4 +156,101 @@ img {
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: auto 1fr auto;
+}
+
+header {
+  box-shadow: 0px 0px 31px 0px rgba(0, 0, 0, 0.16);
+}
+@media (max-width: 768px) {
+  header .info-bar {
+    display: none;
+  }
+}
+header .info-bar .info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+}
+header .info-bar .info .socials {
+  display: flex;
+  justify-content: center;
+}
+header .info-bar .info .socials a {
+  display: block;
+  width: 45px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s;
+}
+header .info-bar .info .socials a:hover {
+  background-color: var(--color-primary-light);
+}
+header .info-bar .info .socials a:first-child, header .info-bar .info .socials a:last-child {
+  border-right: 1px solid var(--color-primary-light);
+  border-left: 1px solid var(--color-primary-light);
+}
+header .info-bar .info .socials a i {
+  color: var(--color-light);
+}
+header .menu-bar {
+  position: relative;
+}
+header .menu-bar .menu {
+  height: 84px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 1fr auto;
+}
+@media (max-width: 768px) {
+  header .menu-bar .menu {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+header .menu-bar .menu nav {
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 769px) {
+  header .menu-bar .menu nav {
+    display: flex !important;
+  }
+}
+@media (max-width: 768px) {
+  header .menu-bar .menu nav {
+    display: none;
+    position: absolute;
+    top: 84px;
+    width: 94%;
+  }
+}
+header .menu-bar .menu nav a {
+  color: var(--color-primary);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 0 4%;
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s;
+}
+header .menu-bar .menu nav a:hover {
+  background-color: var(--color-gray);
+}
+@media (max-width: 768px) {
+  header .menu-bar .fa-magnifying-glass {
+    display: none;
+  }
+}
+header .menu-bar .menu-btn {
+  display: none;
+}
+@media (max-width: 768px) {
+  header .menu-bar .menu-btn {
+    display: block;
+  }
 }
