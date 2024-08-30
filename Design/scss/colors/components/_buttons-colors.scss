@@ -1,0 +1,51 @@
+.btn-primary{
+    background-color: var(--color-primary);
+    color: var(--color-accent);
+
+    border: none;
+
+    &:hover{
+        background-color: var(--color-primary-light);
+    }
+}
+
+.btn-secondary{
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+
+    border: none;
+
+    &:hover{
+        background-color: var(--color-secondary);
+    }
+}
+
+.menu-btn:hover{
+    background-color: var(--color-gray);
+}
+
+.bg-gray{
+    .btn-secondary{
+        background-color: var(--color-secondary);
+
+        &:hover{
+            background-color: var(--color-default);
+            color: var(--color-accent);
+        }
+    }
+}
+
+.bg-primary{
+    .btn-primary{
+        background-color: var(--color-secondary);
+        color: var(--color-dark);
+
+        &:hover{
+            background-color: var(--color-accent);
+        }
+    }
+
+    .btn-secondary{
+        color: var(--color-primary);
+    }
+}

@@ -1,0 +1,13 @@
+html, body, input, button{
+    color: var(--color-default);
+}
+
+a{
+    color: var(--color-primary);
+}
+
+.bg-primary{
+    a{
+        color: var(--color-accent);
+    }
+}
