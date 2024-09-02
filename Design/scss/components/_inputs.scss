@@ -1,0 +1,18 @@
+input, select, textarea{
+    width: 100%;
+
+    padding: 12px 18px;
+
+    border: none;
+    outline: 1px solid var(--color-border-gray);
+
+    font-size: 13px;
+
+    &::placeholder{
+        font-style: italic;
+    }
+}
+
+select{
+    border-right: 12px solid transparent;
+}

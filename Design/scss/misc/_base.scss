@@ -11,11 +11,9 @@
 
 html, body{
     margin: 0;
-
-    @include standard-font;
 }
 
-input, button{
+html, body, input, button, select{
     @include standard-font;
 }
 

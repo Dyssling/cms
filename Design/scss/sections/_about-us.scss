@@ -1,0 +1,74 @@
+.about-us{
+    .container{
+        padding: 100px 0;
+
+        position: relative;
+
+        .about-us-content{
+            width: 60%;
+
+            h6{
+                font-size: 14px;
+            }
+    
+            .about-us-quote{
+                font-size: 20px;
+                font-style: italic;
+                font-weight: 300;
+
+                margin: 35px 0 20px 0;
+            }
+    
+            .about-us-text{
+                font-size: 14px;
+            }
+
+            img{
+                margin: 15px 0 5px 0;
+            }
+    
+            .ceo-founder{
+                font-size: 14px;
+            }
+        }
+
+        .call-back{
+            position: absolute;
+            top: -84px;
+            right: 0;
+
+            width: 35%;
+
+            -webkit-box-shadow: 0px 0px 31px 0px rgba(0,0,0,0.16);
+            -moz-box-shadow: 0px 0px 31px 0px rgba(0,0,0,0.16);
+            box-shadow: 0px 0px 31px 0px rgba(0,0,0,0.16);
+
+            .call-back-header{
+                padding: 25px;
+
+                h3{
+                    color: var(--color-accent);
+                }
+            }
+
+            .call-back-content{
+                padding: 25px;
+
+                p{
+                    font-size: 13px;
+                    font-style: italic;
+
+                    margin-bottom: 20px;
+                }
+
+                input, select{
+                    margin-bottom: 20px;
+                }
+
+                .btn{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
