@@ -451,3 +451,24 @@ header .menu-bar .menu-btn {
 .our-services .container .grid .grid-container img {
   width: 100%;
 }
+
+.our-story .container .our-story-content {
+  text-align: center;
+  padding: 120px 20% 100px 20%;
+  background-image: url("../../img/dot-map.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.our-story .container .our-story-content h2 {
+  color: var(--color-primary);
+}
+.our-story .container .our-story-content h2 span {
+  color: var(--color-secondary);
+}
+.our-story .container .our-story-content p {
+  margin: 35px 0;
+}
+.our-story .container .our-story-img img {
+  width: 100%;
+}
