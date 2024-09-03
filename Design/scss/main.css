@@ -442,6 +442,12 @@ header .menu-bar .menu-btn {
     grid-template-columns: repeat(auto-fill, 345px);
   }
 }
+.our-services .container .grid .grid-container {
+  transition: 0.25s;
+}
+.our-services .container .grid .grid-container:hover {
+  transform: scale(1.02);
+}
 .our-services .container .grid .grid-container div {
   padding: 30px;
 }

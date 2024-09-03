@@ -30,6 +30,16 @@
             }
 
             .grid-container{
+                transition: 0.25s;
+
+                &:hover{
+                    -moz-transform: scale(1.02);
+                    -ms-transform: scale(1.02);
+                    -o-transform: scale(1.02);
+                    -webkit-transform: scale(1.02);
+                    transform: scale(1.02);
+                }
+
                 div{
                     padding: 30px;
 
