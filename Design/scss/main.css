@@ -343,6 +343,18 @@ header .menu-bar .menu-btn {
 .about-us .container .about-us-content {
   width: 60%;
 }
+@media (max-width: 1200px) {
+  .about-us .container .about-us-content {
+    width: 45%;
+  }
+}
+@media (max-width: 768px) {
+  .about-us .container .about-us-content {
+    width: 90%;
+    text-align: center;
+    margin: 0 auto 50px auto;
+  }
+}
 .about-us .container .about-us-content h6 {
   font-size: 14px;
 }
@@ -367,6 +379,18 @@ header .menu-bar .menu-btn {
   right: 0;
   width: 35%;
   box-shadow: 0px 0px 31px 0px rgba(0, 0, 0, 0.16);
+}
+@media (max-width: 1200px) {
+  .about-us .container .call-back {
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .about-us .container .call-back {
+    position: static;
+    width: 90%;
+    margin: auto;
+  }
 }
 .about-us .container .call-back .call-back-header {
   padding: 25px;
