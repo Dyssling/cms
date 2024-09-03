@@ -1,0 +1,18 @@
+.logos{
+    .container{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 150px);
+        justify-content: space-evenly;
+        gap: 50px;
+
+        padding: 75px 0;
+
+        @include px768{
+            padding: 75px 5%;
+        }
+
+        img{
+            width: 100%;
+        }
+    }
+}

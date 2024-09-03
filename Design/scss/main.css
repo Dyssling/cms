@@ -617,3 +617,19 @@ header .menu-bar .menu-btn {
 .our-projects .grid .grid-container:hover .project-content i {
   display: flex;
 }
+
+.logos .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 150px);
+  justify-content: space-evenly;
+  gap: 50px;
+  padding: 75px 0;
+}
+@media (max-width: 768px) {
+  .logos .container {
+    padding: 75px 5%;
+  }
+}
+.logos .container img {
+  width: 100%;
+}
