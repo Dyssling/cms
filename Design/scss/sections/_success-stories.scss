@@ -1,0 +1,83 @@
+.success-stories{
+    .container{
+        padding: 90px 0;
+
+        background-image: url("../../img/dot-map2.svg");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        @include px992{
+            width: 100%;
+        }
+
+        @include px768{
+            background-image: none;
+        }
+
+        .success-stories-content{
+            @include px992{
+                padding: 0 5%;
+            }
+    
+            h6, h2{
+                text-align: center;
+            }
+
+            .grid{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                gap: 50px;
+
+                .grid-container{
+                    width: 320px;
+
+                    p{
+                        font-size: 18px;
+                        font-weight: 600;
+
+                        text-align: center;
+
+                        span{
+                            font-size: 100px;
+
+                            color: var(--color-secondary);
+
+                            display: block;
+
+                            line-height: 125px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .success-stories-img{
+            height: 370px;
+
+            position: relative;
+
+            margin-top: 70px;
+
+            @include px1200{
+                height: 275px;
+            }
+
+            @include px992{
+                height: 1px;
+            }
+
+            img{
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+
+                margin: auto;
+
+                width: 100%;
+            }
+        }
+    }
+}

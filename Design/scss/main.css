@@ -478,3 +478,72 @@ header .menu-bar .menu-btn {
 .our-story .container .our-story-img img {
   width: 100%;
 }
+
+.success-stories .container {
+  padding: 90px 0;
+  background-image: url("../../img/dot-map2.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+@media (max-width: 992px) {
+  .success-stories .container {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .success-stories .container {
+    background-image: none;
+  }
+}
+@media (max-width: 992px) {
+  .success-stories .container .success-stories-content {
+    padding: 0 5%;
+  }
+}
+.success-stories .container .success-stories-content h6, .success-stories .container .success-stories-content h2 {
+  text-align: center;
+}
+.success-stories .container .success-stories-content .grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 50px;
+}
+.success-stories .container .success-stories-content .grid .grid-container {
+  width: 320px;
+}
+.success-stories .container .success-stories-content .grid .grid-container p {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+.success-stories .container .success-stories-content .grid .grid-container p span {
+  font-size: 100px;
+  color: var(--color-secondary);
+  display: block;
+  line-height: 125px;
+}
+.success-stories .container .success-stories-img {
+  height: 370px;
+  position: relative;
+  margin-top: 70px;
+}
+@media (max-width: 1200px) {
+  .success-stories .container .success-stories-img {
+    height: 275px;
+  }
+}
+@media (max-width: 992px) {
+  .success-stories .container .success-stories-img {
+    height: 1px;
+  }
+}
+.success-stories .container .success-stories-img img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+}
