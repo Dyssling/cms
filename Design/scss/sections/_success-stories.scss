@@ -56,8 +56,6 @@
         .success-stories-img{
             height: 370px;
 
-            position: relative;
-
             margin-top: 70px;
 
             @include px1200{
@@ -69,13 +67,6 @@
             }
 
             img{
-                position: absolute;
-                top: 0;
-                right: 0;
-                left: 0;
-
-                margin: auto;
-
                 width: 100%;
             }
         }
