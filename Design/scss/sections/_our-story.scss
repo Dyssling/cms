@@ -1,14 +1,20 @@
 .our-story{
     .container{
+        padding-top: 120px;
+
         .our-story-content{
             text-align: center;
 
-            padding: 120px 20% 100px 20%;
+            padding: 0 20% 100px 20%;
 
             background-image: url("../../img/dot-map.svg");
             background-position: center;
-            background-size: cover;
+            background-size: contain;
             background-repeat: no-repeat;
+
+            @include px768{
+                background-image: none;
+            }
 
             h2{
                 color: var(--color-primary);

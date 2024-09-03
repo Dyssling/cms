@@ -458,13 +458,21 @@ header .menu-bar .menu-btn {
   width: 100%;
 }
 
+.our-story .container {
+  padding-top: 120px;
+}
 .our-story .container .our-story-content {
   text-align: center;
-  padding: 120px 20% 100px 20%;
+  padding: 0 20% 100px 20%;
   background-image: url("../../img/dot-map.svg");
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
+}
+@media (max-width: 768px) {
+  .our-story .container .our-story-content {
+    background-image: none;
+  }
 }
 .our-story .container .our-story-content h2 {
   color: var(--color-primary);
