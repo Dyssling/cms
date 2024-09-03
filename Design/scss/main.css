@@ -78,11 +78,13 @@ h5 {
 }
 
 h6 {
-  font-size: 18px;
+  font-size: 14px;
+  margin-bottom: 2px;
 }
 
 img {
   overflow: hidden;
+  display: block;
 }
 
 .wrapper {
@@ -282,6 +284,7 @@ header .menu-bar .menu-btn {
   display: inline-block;
   position: relative;
   right: -50%;
+  vertical-align: top;
 }
 @media (max-width: 768px) {
   .hero .container .img-container {
@@ -293,7 +296,7 @@ header .menu-bar .menu-btn {
   position: relative;
   left: -50%;
 }
-.hero .hero-content {
+.hero .container .hero-content {
   position: absolute;
   top: 0;
   height: 100%;
@@ -303,35 +306,35 @@ header .menu-bar .menu-btn {
   justify-content: center;
 }
 @media (max-width: 768px) {
-  .hero .hero-content {
+  .hero .container .hero-content {
     position: relative;
     width: 100%;
     text-align: center;
   }
 }
-.hero .hero-content h1 {
+.hero .container .hero-content h1 {
   font-size: 70px;
   line-height: 80px;
   color: var(--color-primary);
   padding-right: 20%;
 }
 @media (max-width: 992px) {
-  .hero .hero-content h1 {
+  .hero .container .hero-content h1 {
     font-size: 60px;
   }
 }
 @media (max-width: 768px) {
-  .hero .hero-content h1 {
+  .hero .container .hero-content h1 {
     padding: 0;
   }
 }
-.hero .hero-content p {
+.hero .container .hero-content p {
   color: var(--color-primary);
   margin: 45px 0;
   padding-right: 20%;
 }
 @media (max-width: 768px) {
-  .hero .hero-content p {
+  .hero .container .hero-content p {
     padding: 0;
   }
 }
@@ -410,5 +413,41 @@ header .menu-bar .menu-btn {
   margin-bottom: 20px;
 }
 .about-us .container .call-back .call-back-content .btn {
+  width: 100%;
+}
+
+.our-services .container {
+  padding: 90px 0;
+}
+.our-services .container h6 {
+  font-size: 14px;
+  text-align: center;
+}
+.our-services .container h2 {
+  text-align: center;
+  padding: 0 5%;
+}
+.our-services .container h2 span {
+  display: block;
+}
+.our-services .container .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 370px);
+  justify-content: space-evenly;
+  gap: 30px;
+  margin-top: 30px;
+}
+@media (max-width: 768px) {
+  .our-services .container .grid {
+    grid-template-columns: repeat(auto-fill, 345px);
+  }
+}
+.our-services .container .grid .grid-container div {
+  padding: 30px;
+}
+.our-services .container .grid .grid-container div p {
+  font-size: 14px;
+}
+.our-services .container .grid .grid-container img {
   width: 100%;
 }

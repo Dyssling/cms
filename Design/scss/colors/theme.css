@@ -75,6 +75,10 @@ h3, h6 {
   color: var(--color-primary);
 }
 
+.bg-light {
+  background-color: var(--color-light);
+}
+
 .bg-gray {
   background-color: var(--color-gray);
 }

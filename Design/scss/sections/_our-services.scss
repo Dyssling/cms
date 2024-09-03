@@ -1,0 +1,47 @@
+.our-services{
+    .container{
+        padding: 90px 0;
+
+        h6{
+            font-size: 14px;
+
+            text-align: center;
+        }
+        h2{
+            text-align: center;
+
+            padding: 0 5%;
+
+            span{
+                display: block;
+            }
+        }
+
+        .grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 370px);
+            justify-content: space-evenly;
+            gap: 30px;
+
+            margin-top: 30px;
+
+            @include px768{
+                grid-template-columns: repeat(auto-fill, 345px);
+            }
+
+            .grid-container{
+                div{
+                    padding: 30px;
+
+                    p{
+                        font-size: 14px;
+                    }
+                }
+
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
