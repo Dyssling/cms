@@ -339,163 +339,69 @@ footer {
   padding: 18px 0;
 }
 
-.ceo-statement .container {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: 1fr 2fr;
-  padding-top: 112px;
-  padding-bottom: 112px;
+.solutions .container {
+  padding-top: 62px;
+  padding-bottom: 62px;
 }
-@media (max-width: 992px) {
-  .ceo-statement .container {
-    display: block;
-  }
-}
-@media (max-width: 992px) {
-  .ceo-statement .container .ceo-img {
-    margin-bottom: 55px;
-  }
-}
-.ceo-statement .container .ceo-img img {
-  width: 100%;
-}
-@media (max-width: 992px) {
-  .ceo-statement .container .ceo-img img {
-    width: 300px;
-    margin: auto;
-  }
-}
-.ceo-statement .container .ceo-img p {
-  font-style: italic;
-  margin-top: 10px;
+.solutions .container h2 {
   text-align: center;
+  padding: 0 5%;
 }
-.ceo-statement .container .ceo-statement-content {
-  margin-left: 50px;
+.solutions .container h2 span {
+  display: block;
+}
+.solutions .container .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 370px);
+  justify-content: space-evenly;
+  gap: 30px;
+  margin-top: 30px;
 }
 @media (max-width: 768px) {
-  .ceo-statement .container .ceo-statement-content {
-    margin: 0;
+  .solutions .container .grid {
+    grid-template-columns: repeat(auto-fill, 345px);
   }
 }
-.ceo-statement .container .ceo-statement-content .quote {
-  font-style: italic;
-  font-size: 20px;
-  font-weight: 300;
-}
-.ceo-statement .container .ceo-statement-content .ceo-statement-paragraph {
-  font-size: 14px;
-  margin: 18px 0;
-}
-.ceo-statement .container .ceo-statement-content .leading {
-  margin: 32px 0;
-}
-
-.reviews {
-  overflow: hidden;
-}
-.reviews .container {
-  display: grid;
-  grid-template-columns: 55% 45%;
-  align-items: center;
-  height: 511px;
-}
-@media (max-width: 1200px) {
-  .reviews .container {
-    display: block;
-    height: auto;
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-}
-.reviews .container .review-content {
-  padding-right: 6%;
-}
-@media (max-width: 1200px) {
-  .reviews .container .review-content {
-    text-align: center;
-    padding: 0;
-  }
-}
-.reviews .container .review-content h2 {
-  padding-right: 20%;
-  color: var(--color-primary);
-}
-@media (max-width: 1200px) {
-  .reviews .container .review-content h2 {
-    padding: 0;
-  }
-}
-.reviews .container .review-content .review-text {
-  font-size: 20px;
-  font-style: italic;
-  font-weight: 300;
-  color: var(--color-primary-light);
-  margin: 20px 0;
-}
-.reviews .container .review-content .customer, .reviews .container .review-content i, .reviews .container .review-content .company {
-  color: var(--color-dark);
-}
-.reviews .container .review-content .customer {
-  font-size: 14px;
-  margin: 22px 0 4px 0;
-}
-.reviews .container .review-content .company {
-  font-size: 20px;
-  font-style: italic;
-}
-.reviews .container .review-img {
-  position: relative;
-  height: 100%;
-}
-@media (max-width: 1200px) {
-  .reviews .container .review-img {
-    margin-top: 25px;
-  }
-}
-.reviews .container .review-img img {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-}
-@media (max-width: 1200px) {
-  .reviews .container .review-img img {
-    position: static;
-    width: 80%;
-    margin: auto;
-  }
-}
-
-.team {
-  padding: 120px 0 84px 0;
-}
-.team .container h6, .team .container h2 {
-  text-align: center;
-}
-.team .container h2 {
-  width: 501px;
-  margin: auto;
-}
-@media (max-width: 768px) {
-  .team .container h2 {
-    width: 80%;
-  }
-}
-.team .container .grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 25px;
-}
-.team .container .grid .grid-container {
+.solutions .container .grid .grid-container {
+  transition: 0.25s;
   border: 1px solid var(--color-border-gray);
 }
-@media (max-width: 768px) {
-  .team .container .grid .grid-container img {
-    width: 350px;
-  }
+.solutions .container .grid .grid-container:hover {
+  transform: scale(1.02);
 }
-.team .container .grid .grid-container .member-info {
-  padding: 24px;
+.solutions .container .grid .grid-container div {
+  padding: 30px;
+}
+.solutions .container .grid .grid-container div p {
+  font-size: 14px;
+}
+.solutions .container .grid .grid-container img {
+  width: 100%;
+}
+.solutions .container .pagination {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.solutions .container .pagination .btn {
+  background-color: transparent;
+  border: none;
+  padding: 15px;
+  min-width: 54px;
+  min-height: 54px;
+  margin: 0 3px;
+  outline: transparent;
+}
+.solutions .container .pagination .btn:hover {
+  outline: 1px solid var(--color-border-gray);
+}
+.solutions .container .pagination .none {
+  color: var(--color-border-dark-transparent);
+}
+.solutions .container .pagination .number {
+  border-radius: 50%;
+}
+.solutions .container .pagination .active {
+  outline: 1px solid var(--color-border-gray);
 }
