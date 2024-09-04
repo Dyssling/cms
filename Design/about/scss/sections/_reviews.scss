@@ -1,0 +1,87 @@
+.reviews{
+    overflow: hidden;
+
+    .container{
+        display: grid;
+        grid-template-columns: 55% 45%;
+        align-items: center;
+
+        height: 511px;
+
+        @include px1200{
+            display: block;
+
+            height: auto;
+
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+        .review-content{
+            padding-right: 6%;
+
+            @include px1200{
+                text-align: center;
+
+                padding: 0;
+            }
+
+            h2{
+                padding-right: 20%;
+                color: var(--color-primary);
+
+                @include px1200{
+                    padding: 0;
+                }
+            }
+
+            .review-text{
+                font-size: 20px;
+                font-style: italic;
+                font-weight: 300;
+                color: var(--color-primary-light);
+
+                margin: 20px 0;
+            }
+
+            .customer, i, .company{
+                color: var(--color-dark);
+            }
+
+            .customer{
+                font-size: 14px;
+
+                margin: 22px 0 4px 0;
+            }
+
+            .company{
+                font-size: 20px;
+                font-style: italic;
+            }
+        }
+
+        .review-img{
+            position: relative;
+
+            height: 100%;
+
+            @include px1200{
+                margin-top: 25px;
+            }
+
+            img{
+                position: absolute;
+                left: 0;
+                bottom: 0;
+
+                @include px1200{
+                    position: static;
+
+                    width: 80%;
+
+                    margin:auto;
+                }
+            }
+        }
+    }
+}
