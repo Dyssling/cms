@@ -1,0 +1,61 @@
+.ceo-statement{
+    .container{
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 1fr 2fr;
+
+        padding-top: 112px;
+        padding-bottom: 112px;
+
+        @include px992{
+            display: block;
+        }
+
+        .ceo-img{
+            @include px992{
+                margin-bottom: 55px;
+            }
+
+            img{
+                width: 100%;
+
+                @include px992{
+                    width: 300px;
+
+                    margin: auto;
+                }
+            }
+
+            p{
+                font-style: italic;
+
+                margin-top: 10px;
+                text-align: center;
+            }
+        }
+
+        .ceo-statement-content{
+            margin-left: 50px;
+
+            @include px768{
+                margin: 0;
+            }
+
+            .quote{
+                font-style: italic;
+                font-size: 20px;
+                font-weight: 300;
+            }
+
+            .ceo-statement-paragraph{
+                font-size: 14px;
+
+                margin: 18px 0;
+            }
+
+            .leading{
+                margin: 32px 0;
+            }
+        }
+    }
+}

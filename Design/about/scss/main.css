@@ -304,3 +304,55 @@ footer {
   color: var(--color-primary);
   padding: 18px 0;
 }
+
+.ceo-statement .container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 2fr;
+  padding-top: 112px;
+  padding-bottom: 112px;
+}
+@media (max-width: 992px) {
+  .ceo-statement .container {
+    display: block;
+  }
+}
+@media (max-width: 992px) {
+  .ceo-statement .container .ceo-img {
+    margin-bottom: 55px;
+  }
+}
+.ceo-statement .container .ceo-img img {
+  width: 100%;
+}
+@media (max-width: 992px) {
+  .ceo-statement .container .ceo-img img {
+    width: 300px;
+    margin: auto;
+  }
+}
+.ceo-statement .container .ceo-img p {
+  font-style: italic;
+  margin-top: 10px;
+  text-align: center;
+}
+.ceo-statement .container .ceo-statement-content {
+  margin-left: 50px;
+}
+@media (max-width: 768px) {
+  .ceo-statement .container .ceo-statement-content {
+    margin: 0;
+  }
+}
+.ceo-statement .container .ceo-statement-content .quote {
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 300;
+}
+.ceo-statement .container .ceo-statement-content .ceo-statement-paragraph {
+  font-size: 14px;
+  margin: 18px 0;
+}
+.ceo-statement .container .ceo-statement-content .leading {
+  margin: 32px 0;
+}
