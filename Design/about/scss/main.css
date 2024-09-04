@@ -281,6 +281,9 @@ header .menu-bar .menu nav a {
 header .menu-bar .menu nav a:hover {
   background-color: var(--color-gray);
 }
+header .menu-bar .menu nav .active {
+  color: var(--color-secondary);
+}
 @media (max-width: 768px) {
   header .menu-bar .fa-magnifying-glass {
     display: none;

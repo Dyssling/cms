@@ -101,6 +101,10 @@ header{
                         background-color: var(--color-gray);
                     }
                 }
+
+                .active{
+                    color: var(--color-secondary);
+                }
             }
         }
 
