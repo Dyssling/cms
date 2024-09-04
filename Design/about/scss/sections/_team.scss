@@ -1,0 +1,42 @@
+.team{
+    padding: 120px 0 84px 0;
+
+    .container{
+        h6, h2{
+            text-align: center;
+        }
+
+        h2{
+            width: 501px;
+
+            margin: auto;
+
+            @include px768{
+                width: 80%;
+            }
+        }
+
+        .grid{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+
+            margin-top: 25px;
+
+            .grid-container{
+                border: 1px solid var(--color-border-gray);
+
+                img{
+                    @include px768{
+                        width: 350px;
+                    }
+                }
+
+                .member-info{
+                    padding: 24px;
+                }
+            }
+        }
+    }
+}

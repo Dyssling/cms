@@ -35,6 +35,10 @@ h3, h6 {
   color: var(--color-secondary);
 }
 
+h2 {
+  color: var(--color-primary);
+}
+
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-accent);
