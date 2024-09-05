@@ -1,0 +1,48 @@
+.support-box{
+    margin-top: 44px;
+
+    padding: 20px;
+
+    background-image: url("../../img/Mail.svg");
+    background-position: bottom right;
+    background-repeat: no-repeat;
+
+    h5{
+        color: var(--color-accent);
+    }
+
+    .support-text{
+        font-size: 14px;
+
+        margin: 12px 0 28px 0;
+    }
+
+    .input-container{
+        position: relative;
+
+        input{
+            border-radius: 2px;
+
+            padding-right: 35px;
+        }
+
+        .btn{
+            padding: 8px;
+            
+            @include flex-center;
+
+            background-color: transparent;
+
+            border: none;
+
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+            &:hover{
+                background-color: var(--color-border-gray);
+            }
+        }
+    }
+}

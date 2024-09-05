@@ -74,30 +74,6 @@ img {
   grid-template-rows: auto 1fr auto;
 }
 
-.btn {
-  display: inline-block;
-  cursor: pointer;
-  border-radius: 3px;
-  border: 1px solid;
-  padding: 15px 40px;
-  font-weight: 700;
-  transition: 0.25s;
-}
-
-.menu-btn {
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 3px;
-  transition: 0.25s;
-  outline: none;
-  border: none;
-  height: 55px;
-  width: 55px;
-  font-size: 26px;
-  background-color: transparent;
-}
-
 .container {
   width: 1170px;
   margin: auto;
@@ -122,6 +98,30 @@ img {
     width: 100%;
     padding: 0 3%;
   }
+}
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid;
+  padding: 15px 40px;
+  font-weight: 700;
+  transition: 0.25s;
+}
+
+.menu-btn {
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: 0.25s;
+  outline: none;
+  border: none;
+  height: 55px;
+  width: 55px;
+  font-size: 26px;
+  background-color: transparent;
 }
 
 .page-top {
@@ -225,6 +225,79 @@ img {
 .contact-info .container .contact-info-content .info-container div .info-label {
   font-weight: 700;
   margin-bottom: 6px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 18px;
+  border: none;
+  font-size: 13px;
+}
+input::-moz-placeholder, select::-moz-placeholder, textarea::-moz-placeholder {
+  font-style: italic;
+}
+input::placeholder, select::placeholder, textarea::placeholder {
+  font-style: italic;
+}
+
+select {
+  border-right: 12px solid transparent;
+}
+
+.sidebar {
+  width: 300px;
+  min-width: 300px;
+}
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 270px;
+    min-width: 270px;
+  }
+}
+@media (max-width: 768px) {
+  .sidebar {
+    margin: 30px auto;
+    width: 100%;
+    border: 1px solid var(--color-border-gray);
+    padding: 20px;
+  }
+}
+
+.support-box {
+  margin-top: 44px;
+  padding: 20px;
+  background-image: url("../../img/Mail.svg");
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+.support-box h5 {
+  color: var(--color-accent);
+}
+.support-box .support-text {
+  font-size: 14px;
+  margin: 12px 0 28px 0;
+}
+.support-box .input-container {
+  position: relative;
+}
+.support-box .input-container input {
+  border-radius: 2px;
+  padding-right: 35px;
+}
+.support-box .input-container .btn {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.support-box .input-container .btn:hover {
+  background-color: var(--color-border-gray);
 }
 
 header {
@@ -336,69 +409,94 @@ footer {
   padding: 18px 0;
 }
 
-.solutions .container {
-  padding-top: 62px;
-  padding-bottom: 62px;
+.article {
+  padding: 80px 0;
 }
-.solutions .container h2 {
-  text-align: center;
-  padding: 0 5%;
-}
-.solutions .container h2 span {
-  display: block;
-}
-.solutions .container .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 370px);
-  justify-content: space-evenly;
-  gap: 30px;
-  margin-top: 30px;
+.article .container {
+  display: flex;
 }
 @media (max-width: 768px) {
-  .solutions .container .grid {
-    grid-template-columns: repeat(auto-fill, 345px);
+  .article .container {
+    flex-direction: column;
   }
 }
-.solutions .container .grid .grid-container {
-  transition: 0.25s;
-  border: 1px solid var(--color-border-gray);
+.article .container .sidebar {
+  margin-right: 3%;
 }
-.solutions .container .grid .grid-container:hover {
-  transform: scale(1.02);
+@media (max-width: 768px) {
+  .article .container .sidebar {
+    order: 2;
+  }
 }
-.solutions .container .grid .grid-container div {
-  padding: 30px;
-}
-.solutions .container .grid .grid-container div p {
-  font-size: 14px;
-}
-.solutions .container .grid .grid-container img {
+.article .container .sidebar img {
+  margin: 24px 0;
   width: 100%;
 }
-.solutions .container .pagination {
+.article .container .sidebar .about-us-text {
+  font-size: 14px;
+}
+.article .container .article-container {
+  padding-left: 4%;
+  border-left: 1px solid var(--color-border-gray);
+}
+@media (max-width: 768px) {
+  .article .container .article-container {
+    order: 1;
+    border: none;
+    padding: 0;
+  }
+}
+.article .container .article-container img {
+  width: 100%;
+}
+.article .container .article-container .img-margin {
   margin-top: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-.solutions .container .pagination .btn {
-  background-color: transparent;
-  border: none;
-  padding: 15px;
-  min-width: 54px;
-  min-height: 54px;
-  margin: 0 3px;
-  outline: transparent;
+.article .container .article-container h4 {
+  margin-top: 30px;
+  margin-bottom: 12px;
 }
-.solutions .container .pagination .btn:hover {
-  outline: 1px solid var(--color-border-gray);
+.article .container .article-container p, .article .container .article-container ul {
+  font-size: 14px;
 }
-.solutions .container .pagination .none {
-  color: var(--color-border-dark-transparent);
+.article .container .article-container p, .article .container .article-container li {
+  margin: 12px 0;
 }
-.solutions .container .pagination .number {
-  border-radius: 50%;
+.article .container .article-container ul {
+  margin: 0;
+  padding: 0;
+  padding-left: 18px;
 }
-.solutions .container .pagination .active {
-  outline: 1px solid var(--color-border-gray);
+.article .container .article-container ul li::marker {
+  color: var(--color-secondary);
+}
+
+.contact {
+  margin-bottom: 76px;
+}
+.contact .container form .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 24px 0;
+}
+@media (max-width: 768px) {
+  .contact .container form .grid {
+    display: block;
+  }
+}
+@media (max-width: 768px) {
+  .contact .container form .grid input, .contact .container form .grid textarea {
+    margin: 12px 0;
+  }
+}
+.contact .container form .grid textarea {
+  grid-column: span 2;
+  height: 175px;
+}
+@media (max-width: 768px) {
+  .contact .container form .btn {
+    display: block;
+    margin: auto;
+  }
 }

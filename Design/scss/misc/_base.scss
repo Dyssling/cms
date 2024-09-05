@@ -13,15 +13,17 @@ html, body{
     margin: 0;
 }
 
-html, body, input, button, select{
+html, body, input, textarea, button, select{
     @include standard-font;
+}
+
+textarea{
+    resize: none;
 }
 
 a{
     text-decoration: none;
 }
-
-@import "../components/buttons";
 
 p{
     margin: 0;
@@ -34,5 +36,3 @@ img{
 
     display: block;
 }
-
-@import "../components/wrapper";

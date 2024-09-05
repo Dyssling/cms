@@ -13,38 +13,18 @@ html, body {
   margin: 0;
 }
 
-html, body, input, button, select {
+html, body, input, textarea, button, select {
   font-size: 16px;
   font-weight: 400;
   font-family: "Poppins", sans-serif;
 }
 
+textarea {
+  resize: none;
+}
+
 a {
   text-decoration: none;
-}
-
-.btn {
-  display: inline-block;
-  cursor: pointer;
-  border-radius: 3px;
-  border: 1px solid;
-  padding: 15px 40px;
-  font-weight: 700;
-  transition: 0.25s;
-}
-
-.menu-btn {
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 3px;
-  transition: 0.25s;
-  outline: none;
-  border: none;
-  height: 55px;
-  width: 55px;
-  font-size: 26px;
-  background-color: transparent;
 }
 
 p {
@@ -94,11 +74,28 @@ img {
   grid-template-rows: auto 1fr auto;
 }
 
-.wrapper {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: auto 1fr auto;
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid;
+  padding: 15px 40px;
+  font-weight: 700;
+  transition: 0.25s;
+}
+
+.menu-btn {
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: 0.25s;
+  outline: none;
+  border: none;
+  height: 55px;
+  width: 55px;
+  font-size: 26px;
+  background-color: transparent;
 }
 
 .container {

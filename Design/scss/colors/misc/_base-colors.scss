@@ -1,5 +1,13 @@
-html, body, input, button{
+html, body, input, textarea, select, button{
     color: var(--color-default);
+}
+
+input, textarea, select{
+    outline: 1px solid var(--color-border-gray);
+
+    &::placeholder{
+        color: var(--color-primary-transparent);
+    }
 }
 
 a{

@@ -1,0 +1,19 @@
+.sidebar{
+    width: 300px;
+    min-width: 300px;
+
+    @include px1200{
+        width: 270px;
+        min-width: 270px;
+    }
+
+    @include px768{
+        margin: 30px auto;
+
+        width: 100%;
+
+        border: 1px solid var(--color-border-gray);
+
+        padding: 20px;
+    }
+}
