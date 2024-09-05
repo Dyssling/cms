@@ -1,0 +1,39 @@
+.map{
+    overflow: hidden;
+
+    @include px768{
+        display: none;
+    }
+
+    .img-container{
+        display: inline-block;
+        position: relative;
+        right: -50%;
+
+        vertical-align: top; //Blir en konstig margin under containern annars
+
+        img{
+            width: 1920px;
+    
+            position: relative;
+            left: -50%;
+
+            @include px1200{
+                width: 1200px;
+            }
+        }
+
+        .overlay{
+            position: absolute;
+            top: 0;
+            left: -50%;
+
+            width: 100%;
+            height: 100%;
+
+            background-color: rgba(0, 0, 0, 0.123);
+
+            pointer-events: none;
+        }
+    }
+}
