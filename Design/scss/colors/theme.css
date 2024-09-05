@@ -7,6 +7,7 @@
   --color-secondary: #D9C3A9;
   --color-accent: #F2EDDC;
   --color-gray: #F7F7F7;
+  --color-dark-gray: #9C9EA6;
   --color-light: #FFFFFF;
   --color-dark: #171717;
   --color-border-dark: #333333;
@@ -88,6 +89,23 @@ h2 {
 }
 .bg-primary .btn-secondary {
   color: var(--color-primary);
+}
+
+.tag-btn {
+  border: 1px solid var(--color-border-gray);
+}
+.tag-btn:hover {
+  background-color: var(--color-gray);
+}
+
+.pagination .btn:hover {
+  outline: 1px solid var(--color-border-gray);
+}
+.pagination .none {
+  color: var(--color-border-dark-transparent);
+}
+.pagination .active {
+  outline: 1px solid var(--color-border-gray);
 }
 
 .bg-light {

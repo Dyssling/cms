@@ -124,6 +124,15 @@ img {
   background-color: transparent;
 }
 
+.tag-btn {
+  padding: 10px 15px;
+  font-size: 13px;
+  font-weight: 400;
+  background-color: transparent;
+  border-radius: 30px;
+  margin: 4px;
+}
+
 .page-top {
   text-align: center;
   padding: 80px 0;
