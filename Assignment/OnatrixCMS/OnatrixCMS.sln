@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnatrixWebApp", "OnatrixWebApp\OnatrixWebApp.csproj", "{54578C83-6680-4930-8C50-E2910E5A285B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnatrixApp", "OnatrixApp\OnatrixApp.csproj", "{B85B9195-F61A-4FF6-8E5E-EC2AC01C744F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{54578C83-6680-4930-8C50-E2910E5A285B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{54578C83-6680-4930-8C50-E2910E5A285B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{54578C83-6680-4930-8C50-E2910E5A285B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{54578C83-6680-4930-8C50-E2910E5A285B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B85B9195-F61A-4FF6-8E5E-EC2AC01C744F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B85B9195-F61A-4FF6-8E5E-EC2AC01C744F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B85B9195-F61A-4FF6-8E5E-EC2AC01C744F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B85B9195-F61A-4FF6-8E5E-EC2AC01C744F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
