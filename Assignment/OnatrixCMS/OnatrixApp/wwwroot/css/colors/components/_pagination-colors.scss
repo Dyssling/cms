@@ -1,0 +1,13 @@
+.pagination{
+    .btn:hover{
+        outline: 1px solid var(--color-border-gray);
+    }
+
+    .none{
+        color: var(--color-border-dark-transparent);
+    }
+
+    .active{
+        outline: 1px solid var(--color-border-gray);
+    }
+}

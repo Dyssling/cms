@@ -1,0 +1,22 @@
+.container{
+    width: 1170px;
+    margin: auto;
+
+    @include px1400{
+        width: 950px;
+    }
+
+    @include px1200{
+        width: 800px;
+    }
+
+    @include px992{
+        width: 650px;
+    }
+
+    @include px768{
+        width: 100%;
+
+        padding: 0 3%;
+    }
+}

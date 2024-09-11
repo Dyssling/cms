@@ -1,0 +1,109 @@
+header {
+    -webkit-box-shadow: 0px 0px 31px 0px rgba(0,0,0,0.16);
+    -moz-box-shadow: 0px 0px 31px 0px rgba(0,0,0,0.16);
+    box-shadow: 0px 0px 31px 0px rgba(0,0,0,0.16);
+
+    .info-bar {
+        @include px768 {
+            display: none;
+        }
+
+        .info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 50px;
+
+            .socials {
+                display: flex;
+                justify-content: center;
+
+                a {
+                    display: block;
+                    width: 45px;
+                    height: 50px;
+
+                    @include flex-center;
+                    transition: 0.25s;
+                    border-right: 1px solid var(--color-primary-light);
+                    border-left: 1px solid var(--color-primary-light);
+
+                    &:hover {
+                        background-color: var(--color-primary-light);
+                    }
+
+                    i {
+                        color: var(--color-light);
+                    }
+                }
+            }
+        }
+    }
+
+    .menu-bar {
+        position: relative;
+
+        .menu {
+            height: 84px;
+            display: grid;
+            align-items: center;
+            grid-template-columns: auto 1fr auto;
+
+            @include px768 {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            nav {
+                display: flex;
+                justify-content: center;
+
+                @media(min-width: 769px) {
+                    display: flex !important;
+                }
+
+                @include px768 {
+                    display: none;
+                    position: absolute;
+                    top: 84px;
+                    width: 94%;
+                    z-index: 999;
+                    background-color: rgba(255, 255, 255, 0.952);
+                }
+
+                a {
+                    color: var(--color-primary);
+                    font-size: 16px;
+                    font-weight: 700;
+                    padding: 0 4%;
+                    height: 84px;
+
+                    @include flex-center;
+                    transition: 0.25s;
+
+                    &:hover {
+                        background-color: var(--color-gray);
+                    }
+                }
+
+                .active {
+                    color: var(--color-secondary);
+                }
+            }
+        }
+
+        .fa-magnifying-glass {
+            @include px768 {
+                display: none;
+            }
+        }
+
+        .menu-btn {
+            display: none;
+
+            @include px768 {
+                display: block;
+            }
+        }
+    }
+}

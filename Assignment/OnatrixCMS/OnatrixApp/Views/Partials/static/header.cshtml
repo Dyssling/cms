@@ -1,0 +1,74 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage;
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper;
+
+@using Umbraco.Cms.Core
+@using Umbraco.Cms.Core.Models.PublishedContent
+@using Umbraco.Cms.Core.Routing
+@using Umbraco.Extensions
+
+@inject IPublishedValueFallback PublishedValueFallback
+@inject IPublishedUrlProvider PublishedUrlProvider
+@*
+    This snippet displays a list of links of the pages immediately under the top-most page in the content tree.
+    This is the home page for a standard website.
+    It also highlights the current active page/section in the navigation with the CSS class "current".
+*@
+
+@{
+    var selection = Model.Root().Children.Where(x => x.IsVisible(PublishedValueFallback)).ToArray();
+    var rootContent = UmbracoHelper.ContentAtRoot();
+    var settings = rootContent?.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
+    var socialMediaList = settings?.Value<IEnumerable<Umbraco.Cms.Core.Models.Blocks.BlockListItem>>("socialMediaLinks") ?? null;
+}
+
+@if (selection?.Length > 0)
+{
+    <header>
+        <div class="info-bar bg-primary">
+                <div class="info container">
+                    @(settings?.Value<string>("officeLocation") ?? "")
+                    @if (socialMediaList != null){
+                        <div class="socials">
+                            @{
+                                foreach (var item in socialMediaList){
+                                    var platformName = item?.Content?.Value<string>("platform");
+                                    var platformLink = item?.Content?.Value<string>("platformLink");
+
+                                    switch(platformName!.ToLower()){
+                                        case "facebook":
+                                            <a href="@platformLink"><i class="fa-brands fa-facebook-f"></i></a>
+                                            break;
+                                        case "twitter":
+                                            <a href="@platformLink"><i class="fa-brands fa-twitter"></i></a>
+                                            break;
+                                        case "linkedin":
+                                            <a href="@platformLink"><i class="fa-brands fa-linkedin-in"></i></a>
+                                            break;
+                                        case "youtube":
+                                            <a href="@platformLink"><i class="fa-brands fa-youtube"></i></a>
+                                            break;
+                                    }
+                                }
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="menu-bar">
+                <div class="menu container">
+                    <a href="/"><img src="@(settings?.Value<IPublishedContent>("siteLogo")?.Url() ?? "")" alt="Logo"></a>
+                    <nav id="nav">
+                        @foreach (var item in selection)
+                        {
+                            <a class="@(item.IsAncestorOrSelf(Model) ? "active" : null)" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
+                        }
+                    </nav>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <button class="menu-btn" onclick="showMenu()">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+}
