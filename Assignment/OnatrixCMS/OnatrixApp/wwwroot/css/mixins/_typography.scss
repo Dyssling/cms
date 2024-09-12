@@ -4,38 +4,53 @@
     font-size: 16px;
     font-weight: 400;
     font-family: 'Poppins', sans-serif;
+
+    .centerText{
+        text-align: center;
+    }
+
+    .thinText{
+        font-weight: 300;
+    }
 }
 
-@mixin headings{
-    h1, h2, h3, h4, h5, h6{
+@mixin headings {
+    h1, h2, h3, h4, h5, h6 {
         font-weight: 700;
         margin: 0;
     }
 
-    h1{
+    h1 {
         font-size: 50px;
     }
 
-    h2{
+    .large-h1 {
+        font-size: 70px;
+    }
+
+    h2 {
         font-size: 40px;
     }
 
-    h3{
+    h3 {
         font-size: 30px;
     }
 
-    h4{
+    h4 {
         font-size: 25px;
     }
 
-    h5{
+    h5 {
         font-size: 22px;
         font-weight: 600;
     }
 
-    h6{
+    h6 {
         font-size: 14px;
+        margin-bottom: 2px;
+    }
 
-        margin-bottom:2px;
+    .thinHeading {
+        font-weight: 600;
     }
 }

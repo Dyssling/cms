@@ -2,6 +2,12 @@ h3, h6{
     color: var(--color-secondary);
 }
 
-h2{
+h1, h2, h4, h5{
     color: var(--color-primary);
+}
+
+.bg-primary{
+    h1, h2, h4, h5{
+        color: var(--color-light);
+    }
 }

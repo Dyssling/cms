@@ -1,7 +1,10 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.CustomPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
 	Layout = "mainLayout.cshtml";
 
 	ViewBag.Title = Model.Value("pageTitle");
 }
+
+@await Html.GetBlockGridHtmlAsync(Model.Content)

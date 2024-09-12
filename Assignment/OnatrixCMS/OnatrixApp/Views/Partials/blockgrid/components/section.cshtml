@@ -1,0 +1,54 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+
+@{
+    var sectionTitle = Model.Content.Value<string>("sectionTitle");
+    var sectionId = sectionTitle!.ToLower().Trim().Replace(" ", "-");
+
+    bool padding = Model.Content.Value<bool>("padding");
+
+    bool isFullWidth = Model.Content.Value<bool>("fullWidth");
+
+    var bgColorLabel = Model.Content.Value<ColorPickerValueConverter.PickedColor>("backgroundColor")!.Label.ToLower();
+
+    var bgImageUrl = Model.Content.Value<IPublishedContent>("backgroundImage")?.Url() ?? null;
+
+    bool hasBgImage = false;
+    bool bgImageCoversSection = false;
+
+    string bgImageStyling = "";
+
+    if (bgImageUrl != null)
+    {
+        hasBgImage = true;
+        bgImageCoversSection = Model.Content.Value<bool>("backgroundImageCoversEntireSection");
+
+        if (bgImageCoversSection)
+        {
+            bgImageStyling = "background-image: url(" + '"' + bgImageUrl + '"' + ");background-position: center;background-size: cover;background-repeat: no-repeat;";
+        }
+
+        else
+        {
+            bgImageStyling = "background-image: url(" + '"' + bgImageUrl + '"' + ");background-position: center;background-size: contain;background-repeat: no-repeat;";
+        }
+    }
+}
+
+@if (isFullWidth)
+{
+    <section id="@sectionId" class="bg-@bgColorLabel@(padding ? " section-padding" : "")" style="@bgImageStyling")>
+        @await Html.GetBlockGridItemAreasHtmlAsync(Model)
+    </section>
+}
+
+else
+{
+    <section id="@sectionId" class="bg-@bgColorLabel@(padding ? " section-padding" : "")">
+        <div class="section-container" style="@bgImageStyling">
+            @await Html.GetBlockGridItemAreasHtmlAsync(Model)
+        </div>
+    </section>
+}

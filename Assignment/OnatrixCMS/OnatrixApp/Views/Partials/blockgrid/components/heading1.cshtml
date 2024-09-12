@@ -1,0 +1,36 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var fontSize = Model.Content.Value<string>("fontSize")!;
+
+    switch (fontSize)
+    {
+        case "Standard":
+            fontSize = "";
+            break;
+        case "Large":
+            fontSize = " large-h1";
+            break;
+    }
+
+    var fontWeight = Model.Content.Value<string>("fontWeight")!;
+
+    switch (fontWeight)
+    {
+        case "Standard":
+            fontWeight = "";
+            break;
+        case "Thin":
+            fontWeight = " thinHeading";
+            break;
+    }
+
+    var isCentered = Model.Content.Value<bool>("alignToCenter");
+    var content = Model.Content.Value<string>("content");
+}
+
+<h1 class="@(isCentered ? "centerText" : "")@fontSize@fontWeight">
+    @content
+</h1>
