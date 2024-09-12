@@ -44,6 +44,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 50px;
+  margin-bottom: 40px;
 }
 
 .large-h1 {
@@ -52,19 +53,22 @@ h1 {
 
 h2 {
   font-size: 40px;
+  margin-bottom: 30px;
 }
 
 h3 {
   font-size: 30px;
+  margin-bottom: 20px;
 }
 
 h4 {
   font-size: 25px;
+  margin-bottom: 12px;
 }
 
 h5 {
   font-size: 22px;
-  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 h6 {
