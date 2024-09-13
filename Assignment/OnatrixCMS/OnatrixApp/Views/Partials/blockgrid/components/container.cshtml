@@ -1,0 +1,20 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+
+@{
+    bool marginSides = Model.Content.Value<bool>("marginSides");
+    bool marginTopAndBottom = Model.Content.Value<bool>("marginTopAndBottom");
+    bool paddingSides = Model.Content.Value<bool>("paddingSides");
+    bool paddingTopAndBottom = Model.Content.Value<bool>("paddingTopAndBottom");
+
+    var bgColorLabel = Model.Content.Value<ColorPickerValueConverter.PickedColor>("backgroundColor")!.Label.ToLower();
+
+    var classString = $"block-grid-container bg-{bgColorLabel}{(marginSides ? " container-margin-sides" : "")}{(marginTopAndBottom ? " container-margin-top-bottom" : "")}{(paddingSides ? " container-padding-sides" : "")}{(paddingTopAndBottom ? " container-padding-top-bottom" : "")}";
+    classString = classString.Trim();
+}
+
+<div class="@classString">
+    @await Html.GetBlockGridItemAreasHtmlAsync(Model)
+</div>

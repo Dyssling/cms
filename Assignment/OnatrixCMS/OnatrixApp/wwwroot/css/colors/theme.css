@@ -52,6 +52,10 @@ h1, h2, h4, h5 {
   color: var(--color-light);
 }
 
+h2 span {
+  color: var(--color-secondary);
+}
+
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-accent);

@@ -17,8 +17,19 @@
 
     var isCentered = Model.Content.Value<bool>("alignToCenter");
     var content = Model.Content.Value<string>("content");
+    var spanContent = Model.Content.Value<string>("spanText");
 }
 
-<h2 class="@(isCentered ? "center-text" : "")@fontWeight">
-    @content
-</h2>
+@if (!spanContent.IsNullOrWhiteSpace())
+{
+    <h2 class="@(isCentered ? "center-text" : "")@fontWeight">
+        @content <span>@spanContent</span>
+    </h2>
+}
+
+else
+{
+    <h2 class="@(isCentered ? "center-text" : "")@fontWeight">
+        @content
+    </h2>
+}
