@@ -1,0 +1,29 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+
+@{
+    var isFullWidth = Model.Content.Value<bool>("fullWidth");
+    var isCentered = Model.Content.Value<bool>("alignToCenter");
+    var text = Model.Content.Value<string>("text");
+    var link = Model.Content.Value<string>("link");
+    
+    var colorLabel = Model.Content.Value<ColorPickerValueConverter.PickedColor>("color")!.Label.ToLower();
+
+    var classString = $"btn btn-{colorLabel}{(isFullWidth ? " full-width" : "")}";
+
+    classString = classString.Trim();
+}
+
+@if (isCentered)
+{
+    <div class="center-btn-container">
+        <a href="@link" class="@classString">@text</a>
+    </div>
+}
+
+else
+{
+    <a href="@link" class="@classString">@text</a>
+}

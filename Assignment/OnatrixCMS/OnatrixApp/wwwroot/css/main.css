@@ -18,10 +18,28 @@ html, body, input, textarea, button, select {
   font-weight: 400;
   font-family: "Poppins", sans-serif;
 }
-html .centerText, body .centerText, input .centerText, textarea .centerText, button .centerText, select .centerText {
+html .center-text, body .center-text, input .center-text, textarea .center-text, button .center-text, select .center-text {
   text-align: center;
 }
-html .thinText, body .thinText, input .thinText, textarea .thinText, button .thinText, select .thinText {
+html .thick-p, body .thick-p, input .thick-p, textarea .thick-p, button .thick-p, select .thick-p {
+  font-weight: 600;
+}
+html .large-p, body .large-p, input .large-p, textarea .large-p, button .large-p, select .large-p {
+  font-size: 20px;
+}
+html .small-p, body .small-p, input .small-p, textarea .small-p, button .small-p, select .small-p {
+  font-size: 14px;
+}
+html .italic, body .italic, input .italic, textarea .italic, button .italic, select .italic {
+  font-style: italic;
+}
+html .margin-p, body .margin-p, input .margin-p, textarea .margin-p, button .margin-p, select .margin-p {
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+html .quote, body .quote, input .quote, textarea .quote, button .quote, select .quote {
+  font-style: italic;
+  font-size: 20px;
   font-weight: 300;
 }
 
@@ -76,13 +94,17 @@ h6 {
   margin-bottom: 2px;
 }
 
-.thinHeading {
+.thin-h {
   font-weight: 600;
 }
 
 img {
   overflow: hidden;
   display: block;
+}
+
+.full-width {
+  width: 100%;
 }
 
 .wrapper {
@@ -123,6 +145,15 @@ img {
   background-color: transparent;
   border-radius: 30px;
   margin: 4px;
+}
+
+.center-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.full-width {
+  text-align: center;
 }
 
 .container {

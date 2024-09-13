@@ -3,18 +3,6 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 
 @{
-    var fontSize = Model.Content.Value<string>("fontSize")!;
-
-    switch (fontSize)
-    {
-        case "Standard":
-            fontSize = "";
-            break;
-        case "Large":
-            fontSize = " large-h1";
-            break;
-    }
-
     var fontWeight = Model.Content.Value<string>("fontWeight")!;
 
     switch (fontWeight)
@@ -31,6 +19,6 @@
     var content = Model.Content.Value<string>("content");
 }
 
-<h1 class="@(isCentered ? "center-text" : "")@fontSize@fontWeight">
+<h5 class="@(isCentered ? "center-text" : "")@fontWeight">
     @content
-</h1>
+</h5>
