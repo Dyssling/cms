@@ -1,0 +1,11 @@
+.bullet-secondary {
+    &::marker {
+        color: var(--color-secondary);
+    }
+}
+
+.bullet-turquoise {
+    &::marker {
+        color: var(--color-turquoise);
+    }
+}

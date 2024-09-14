@@ -1,0 +1,109 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ServiceItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper;
+
+@{
+	Layout = "mainLayout.cshtml";
+
+    ViewBag.Title = Model.Name;
+
+    var rootContent = UmbracoHelper.ContentAtRoot();
+    var settings = rootContent?.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
+
+    var sidebarImgUrl = settings?.Value<IPublishedContent>("imageForSidebar")?.Url() ?? null;
+    var aboutUsText = settings?.Value<string>("shortDescriptionOfTheCompany") ?? null;
+    
+    var officeLocation = settings?.Value<string>("officeLocation") ?? null;
+    var officePhone = settings?.Value<string>("officePhone") ?? null;
+	var officeEmail = settings?.Value<string>("officeEmail") ?? null;
+    var contactImage = settings?.Value<IPublishedContent>("imageForContactInfo")?.Url() ?? null;
+}
+	<section class="page-top bg-gray">
+		<h1>@Model.Name</h1>
+		<div class="breadcrumbs">
+			<a href="#">Home</a>
+			<i class="fa-solid fa-chevron-right"></i>
+			<a href="#">Services</a>
+			<i class="fa-solid fa-chevron-right"></i>
+			<a class="active" href="#">@Model.Name</a>
+		</div>
+	</section>
+	<section class="article-section">
+		<div class="container">
+			<aside class="sidebar">
+				@if (!aboutUsText.IsNullOrWhiteSpace()){
+					<h5>About us</h5>
+					@if (!sidebarImgUrl.IsNullOrWhiteSpace()){
+						<img src="@sidebarImgUrl" alt="">
+					}
+					<p class="about-us-text">
+						@aboutUsText
+					</p>
+				}
+				<form class="support-box bg-primary" method="get" novalidate>
+					<h5>How can we help you?</h5>
+					<p class="support-text">online support 24/7, we are here to help you</p>
+					<div class="input-container">
+						<input type="email" id="email" name="email" placeholder="E-mail address">
+						<button class="btn"><i class="fa-regular fa-envelope"></i></button>
+					</div>
+				</form>
+			</aside>
+			<article>
+				@await Html.GetBlockGridHtmlAsync(Model.Content)
+			</article>
+		</div>
+	</section>
+	<section class="question-form">
+		<div class="container">
+			<h4>Have a question?</h4>
+			<form method="get" novalidate>
+				<div class="grid">
+					<input type="text" id="name" name="name" placeholder="Name">
+					<input type="email" id="email" name="email" placeholder="Email">
+					<textarea id="question" name="question" placeholder="Question"></textarea>
+				</div>
+				<button class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</section>
+	<section class="contact-info bg-gray">
+		<div class="container">
+			@if (!officeLocation.IsNullOrWhiteSpace() || !officePhone.IsNullOrWhiteSpace() || !officeEmail.IsNullOrWhiteSpace()){
+				@if (!contactImage.IsNullOrWhiteSpace()){
+                    <img src="@contactImage" alt="">
+                }
+                <div class="contact-info-content">
+                    <h2>Let us know about your next project</h2>
+                    @if (!officeLocation.IsNullOrWhiteSpace()){
+                        <div class="info-container">
+                            <i class="fa-regular fa-location-dot"></i>
+                            <div>
+                                <p class="info-label">Office location</p>
+                                <p class="info-text">Klarabergsviadukten 90, 111 52 Stockholm</p>
+                            </div>
+                        </div>
+                    }
+                    @if (!officePhone.IsNullOrWhiteSpace()){
+                        <div class="info-container">
+                            <i class="fa-regular fa-phone"></i>
+                            <div>
+                                <p class="info-label">Phone number</p>
+                                <p class="info-text">+46 8 123 456 75</p>
+                            </div>
+                        </div>
+                    }
+                    @if (!officeEmail.IsNullOrWhiteSpace()){
+                        <div class="info-container">
+                            <i class="fa-regular fa-envelope"></i>
+                            <div>
+                                <p class="info-label">E-mail address</p>
+                                <p class="info-text">sales@onatrix.com</p>
+                            </div>
+                        </div>
+                    }
+			    </div>
+			}
+		</div>
+	</section>

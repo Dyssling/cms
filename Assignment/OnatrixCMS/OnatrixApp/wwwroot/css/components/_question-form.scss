@@ -1,0 +1,36 @@
+﻿.question-form {
+    margin-bottom: 76px;
+
+    .container {
+        form {
+            .grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+                margin: 24px 0;
+
+                @include px768 {
+                    display: block;
+                }
+
+                input, textarea {
+                    @include px768 {
+                        margin: 12px 0;
+                    }
+                }
+
+                textarea {
+                    grid-column: span 2;
+                    height: 175px;
+                }
+            }
+
+            .btn {
+                @include px768 {
+                    display: block;
+                    margin: auto;
+                }
+            }
+        }
+    }
+}

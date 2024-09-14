@@ -1,0 +1,20 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+
+@{
+    var list = Model.Content.Value<IEnumerable<BlockListItem>>("list");
+
+    var bulletColor = Model.Content.Value<ColorPickerValueConverter.PickedColor>("bulletColor")!.Label.ToLower();
+}
+
+<ul>
+    @foreach (var item in list!)
+    {
+        var itemContent = item.Content.Value<string>("item");
+
+        <li class="bullet-@bulletColor">@itemContent</li>
+    }
+</ul>

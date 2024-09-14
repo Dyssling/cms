@@ -104,6 +104,18 @@ h2 span {
   background-color: var(--color-gray);
 }
 
+.date {
+  color: var(--color-dark-gray);
+}
+
+.bullet-secondary::marker {
+  color: var(--color-secondary);
+}
+
+.bullet-turquoise::marker {
+  color: var(--color-turquoise);
+}
+
 .pagination .btn:hover {
   outline: 1px solid var(--color-border-gray);
 }
@@ -112,6 +124,10 @@ h2 span {
 }
 .pagination .active {
   outline: 1px solid var(--color-border-gray);
+}
+
+.support-box h5 {
+  color: var(--color-accent);
 }
 
 .bg-light {

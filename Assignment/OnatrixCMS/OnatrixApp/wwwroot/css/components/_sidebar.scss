@@ -1,0 +1,61 @@
+.sidebar {
+    width: 300px;
+    min-width: 300px;
+    margin-right: 3%;
+    margin-left: 3%;
+
+    @include px1200 {
+        width: 270px;
+        min-width: 270px;
+    }
+
+    @include px768 {
+        order: 2;
+        margin: 30px auto;
+        width: 100%;
+        border: 1px solid var(--color-border-gray);
+        padding: 20px;
+    }
+
+    img {
+        margin: 24px 0;
+        width: 100%;
+    }
+
+    .about-us-text {
+        font-size: 14px;
+    }
+
+    .recent-projects-list {
+        margin-bottom: 22px;
+
+        .recent-project-container {
+            display: flex;
+            font-size: 14px;
+            border-bottom: 1px solid var(--color-border-gray);
+            padding: 14px 0;
+            transition: 0.25s;
+
+            &:nth-last-child(1 of .recent-project-container) {
+                border: none;
+            }
+
+            &:hover {
+                background-color: var(--color-gray);
+            }
+
+            img {
+                width: 60%;
+                margin: 0;
+            }
+
+            .recent-project-content {
+                margin-left: 12px;
+
+                .date {
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+}
