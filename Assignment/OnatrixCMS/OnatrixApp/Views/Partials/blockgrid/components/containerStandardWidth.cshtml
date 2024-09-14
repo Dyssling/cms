@@ -5,6 +5,7 @@
 
 @{
     bool paddingTopAndBottom = Model.Content.Value<bool>("paddingTopAndBottom");
+    bool shadow = Model.Content.Value<bool>("shadow");
 
     var bgColorLabel = "";
 
@@ -13,7 +14,7 @@
         bgColorLabel = $" bg-{bgColorLabel.ToLower()}";
     }
 
-    var classString = $"section-container{bgColorLabel}{(paddingTopAndBottom ? " container-padding-top-bottom" : "")}";
+    var classString = $"section-container{bgColorLabel}{(shadow ? " container-shadow" : "")}{(paddingTopAndBottom ? " container-padding-top-bottom" : "")}";
 }
 
 <div class="@classString">

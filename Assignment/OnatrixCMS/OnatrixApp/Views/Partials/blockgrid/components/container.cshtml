@@ -8,6 +8,7 @@
     bool marginTopAndBottom = Model.Content.Value<bool>("marginTopAndBottom");
     bool paddingSides = Model.Content.Value<bool>("paddingSides");
     bool paddingTopAndBottom = Model.Content.Value<bool>("paddingTopAndBottom");
+    bool shadow = Model.Content.Value<bool>("shadow");
 
     var bgColorLabel = "";
 
@@ -16,7 +17,7 @@
         bgColorLabel = $" bg-{bgColorLabel.ToLower()}";
     }
 
-    var classString = $"block-grid-container{bgColorLabel}{(marginSides ? " container-margin-sides" : "")}{(marginTopAndBottom ? " container-margin-top-bottom" : "")}{(paddingSides ? " container-padding-sides" : "")}{(paddingTopAndBottom ? " container-padding-top-bottom" : "")}";
+    var classString = $"block-grid-container{bgColorLabel}{(shadow ? " container-shadow" : "")}{(marginSides ? " container-margin-sides" : "")}{(marginTopAndBottom ? " container-margin-top-bottom" : "")}{(paddingSides ? " container-padding-sides" : "")}{(paddingTopAndBottom ? " container-padding-top-bottom" : "")}";
 }
 
 <div class="@classString">

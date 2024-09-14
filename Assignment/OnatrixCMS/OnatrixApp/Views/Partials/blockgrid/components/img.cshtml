@@ -1,0 +1,16 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var imageUrl = Model.Content.Value<IPublishedContent>("imageFile")?.Url();
+    
+    var alt = Model.Content.Value<string>("imageDescription");
+    var center = Model.Content.Value<bool>("alignToCenter");
+
+    var classString = $"{(center ? "margin-auto" : "")}";
+
+    classString = classString.Trim();
+}
+
+<img class="@classString" src="@imageUrl" alt="@alt">
