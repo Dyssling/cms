@@ -67,6 +67,7 @@ h1 {
 
 .large-h1 {
   font-size: 70px;
+  line-height: 80px;
 }
 
 h2 {
@@ -145,7 +146,7 @@ img {
   grid-row: span var(--umb-block-grid--area-row-span, 1);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .umb-block-grid__layout-item {
     grid-column-end: span min(var(--umb-block-grid--item-column-span, 1), var(--umb-block-grid--grid-columns));
   }
@@ -222,6 +223,10 @@ img {
   text-align: center;
 }
 
+.btn-margin {
+  margin-top: 30px;
+}
+
 .container {
   width: 1170px;
   margin: auto;
@@ -262,6 +267,11 @@ select {
   border-right: 12px solid transparent;
 }
 
+@media (max-width: 768px) {
+  section {
+    background-image: none !important;
+  }
+}
 section .section-container {
   width: 1170px;
   margin: auto;

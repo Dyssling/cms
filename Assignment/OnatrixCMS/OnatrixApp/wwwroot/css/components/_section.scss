@@ -1,4 +1,8 @@
 section {
+    @include px768 {
+        background-image: none !important;
+    }
+
     .section-container {
         width: 1170px;
         margin: auto;

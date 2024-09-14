@@ -6,12 +6,13 @@
 @{
     var isFullWidth = Model.Content.Value<bool>("fullWidth");
     var isCentered = Model.Content.Value<bool>("alignToCenter");
+    var margin = Model.Content.Value<bool>("addMargin");
     var text = Model.Content.Value<string>("text");
     var link = Model.Content.Value<string>("link");
     
     var colorLabel = Model.Content.Value<ColorPickerValueConverter.PickedColor>("color")!.Label.ToLower();
 
-    var classString = $"btn btn-{colorLabel}{(isFullWidth ? " full-width" : "")}";
+    var classString = $"btn btn-{colorLabel}{(isFullWidth ? " full-width" : "")}{(margin ? " btn-margin" : "")}";
 
     classString = classString.Trim();
 }
