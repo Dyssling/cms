@@ -316,10 +316,10 @@ section .section-container {
 .page-top {
   text-align: center;
   padding: 80px 0;
-  /*    background-image: url("../../img/page-top.svg");
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;*/
+  background-image: url("/media/prtmu35z/page-top.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .page-top h1 {
   font-size: 40px;
@@ -469,9 +469,9 @@ section .section-container {
 .support-box {
   margin-top: 44px;
   padding: 20px;
-  /*    background-image: url("../../img/Mail.svg");
-      background-position: bottom right;
-      background-repeat: no-repeat;*/
+  background-image: url("/media/sqzihcdd/mail.svg");
+  background-position: bottom right;
+  background-repeat: no-repeat;
 }
 .support-box h5 {
   color: var(--color-accent);

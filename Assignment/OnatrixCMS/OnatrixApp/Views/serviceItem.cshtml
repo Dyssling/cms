@@ -21,13 +21,7 @@
 }
 	<section class="page-top bg-gray">
 		<h1>@Model.Name</h1>
-		<div class="breadcrumbs">
-			<a href="#">Home</a>
-			<i class="fa-solid fa-chevron-right"></i>
-			<a href="#">Services</a>
-			<i class="fa-solid fa-chevron-right"></i>
-			<a class="active" href="#">@Model.Name</a>
-		</div>
+        @await Html.PartialAsync("partials/static/breadcrumbs.cshtml")
 	</section>
 	<section class="article-section">
 		<div class="container">
