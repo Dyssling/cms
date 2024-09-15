@@ -1,0 +1,51 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+	var parentId = Model.Content.Value<IPublishedContent>("serviceItemParent")!.Id;
+
+	var numberOfItems = Model.Content.Value<int>("numberOfItems");
+
+	IEnumerable<IPublishedContent>? selection = null;
+
+	if (numberOfItems != 0)
+	{
+		selection = Umbraco.Content(parentId)?
+		.ChildrenOfType("serviceItem")?
+		.Where(x => x.IsVisible())
+		.Take(numberOfItems);
+	}
+
+	else
+	{
+		selection = Umbraco.Content(parentId)?
+		.ChildrenOfType("serviceItem")?
+		.Where(x => x.IsVisible());
+	}
+
+	
+
+}
+
+@if (selection != null)
+{
+	<div class="service-grid">
+		@foreach (var item in selection)
+		{
+			var thumbnailUrl = item.Value<IPublishedContent>("thumbnail")!.Url();
+			var intro = item.Value<string>("shortIntro");
+			<a class="grid-container" href="@item.Url()">
+				<div class="grid-container-header">
+					<h5>@item.Name</h5>
+				</div>
+				<img src="@thumbnailUrl" alt="Service image">
+				<div class="grid-container-text">
+					<p>
+						@intro
+					</p>
+				</div>
+			</a>
+		}
+	</div>
+}
