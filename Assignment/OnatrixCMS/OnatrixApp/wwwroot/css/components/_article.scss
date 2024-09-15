@@ -11,7 +11,6 @@
         article {
             padding-left: 4%;
             border-left: 1px solid var(--color-border-gray);
-
             width: 100%;
 
             @include px768 {
@@ -37,14 +36,26 @@
                 font-size: 14px;
             }
 
-            li, margin-p {
-                margin: 12px 0;
+            margin-top-p {
+                margin-top: 12px;
+            }
+
+            margin-bottom-p {
+                margin-bottom: 12px;
             }
 
             ul {
                 margin: 0;
                 padding: 0;
                 padding-left: 18px;
+
+                li {
+                    margin-bottom: 12px;
+
+                    &:nth-last-child(1 of li) {
+                        margin-bottom: 0;
+                    }
+                }
             }
 
             .article-tags {

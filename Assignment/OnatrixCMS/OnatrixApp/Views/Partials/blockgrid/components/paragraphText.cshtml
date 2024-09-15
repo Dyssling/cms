@@ -32,10 +32,11 @@
 
     var italic = Model.Content.Value<bool>("italic");
     var isCentered = Model.Content.Value<bool>("alignToCenter");
-    var margin = Model.Content.Value<bool>("addMargin");
+    var topMargin = Model.Content.Value<bool>("addTopMargin");
+    var bottomMargin = Model.Content.Value<bool>("addBottomMargin");
     var content = Model.Content.Value<string>("content");
 
-    var classString = $"{(isCentered ? "center-text" : "")}{(italic ? " italic" : "")}{(margin ? " margin-p" : "")}{fontSize}{fontWeight}";
+    var classString = $"{(isCentered ? "center-text" : "")}{(italic ? " italic" : "")}{(topMargin ? " margin-top-p" : "")}{(bottomMargin ? " margin-bottom-p" : "")}{fontSize}{fontWeight}";
 
     classString = classString.Trim();
 }

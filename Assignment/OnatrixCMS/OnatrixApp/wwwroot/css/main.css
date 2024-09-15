@@ -33,8 +33,10 @@ html .small-p, body .small-p, input .small-p, textarea .small-p, button .small-p
 html .italic, body .italic, input .italic, textarea .italic, button .italic, select .italic {
   font-style: italic;
 }
-html .margin-p, body .margin-p, input .margin-p, textarea .margin-p, button .margin-p, select .margin-p {
+html .margin-top-p, body .margin-top-p, input .margin-top-p, textarea .margin-top-p, button .margin-top-p, select .margin-top-p {
   margin-top: 18px;
+}
+html .margin-bottom-p, body .margin-bottom-p, input .margin-bottom-p, textarea .margin-bottom-p, button .margin-bottom-p, select .margin-bottom-p {
   margin-bottom: 18px;
 }
 html .quote, body .quote, input .quote, textarea .quote, button .quote, select .quote {
@@ -376,13 +378,22 @@ section .section-container {
 .article-section .container article ul {
   font-size: 14px;
 }
-.article-section .container article li, .article-section .container article margin-p {
-  margin: 12px 0;
+.article-section .container article margin-top-p {
+  margin-top: 12px;
+}
+.article-section .container article margin-bottom-p {
+  margin-bottom: 12px;
 }
 .article-section .container article ul {
   margin: 0;
   padding: 0;
   padding-left: 18px;
+}
+.article-section .container article ul li {
+  margin-bottom: 12px;
+}
+.article-section .container article ul li:nth-last-child(1 of li) {
+  margin-bottom: 0;
 }
 .article-section .container article .article-tags {
   display: flex;
