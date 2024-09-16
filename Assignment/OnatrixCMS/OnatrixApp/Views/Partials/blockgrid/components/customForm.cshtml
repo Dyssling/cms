@@ -1,0 +1,60 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+
+@{
+    bool nameField = Model.Content.Value<bool>("nameField");
+    bool emailField = Model.Content.Value<bool>("emailField");
+    bool phoneField = Model.Content.Value<bool>("phoneField");
+    bool messageBox = Model.Content.Value<bool>("messageBox");
+    bool fullWidthButton = Model.Content.Value<bool>("fullWidthButton");
+    bool listLayout = Model.Content.Value<bool>("listLayout");
+
+    var buttonColorLabel = Model.Content.Value<ColorPickerValueConverter.PickedColor>("buttonColor")!.Label.ToLower();
+
+    var serviceList = Model.Content.Value<IEnumerable<BlockListItem>>("serviceSelector");
+
+    if (serviceList == null)
+    {
+        serviceList = new List<BlockListItem>();
+    }
+}
+
+<form method="get" novalidate>
+    <div class="form-grid@(listLayout ? " form-list-layout" : "")">
+        @if (nameField == true)
+        {
+            <input type="text" id="name" name="name" placeholder="Name" value="">
+        }
+
+        @if (emailField == true)
+        {
+            <input type="email" id="email" name="email" placeholder="Email address" value="">
+
+        }
+
+        @if (phoneField == true)
+        {
+            <input type="text" id="phone" name="phone" placeholder="Phone" value="">
+        }
+
+        @if (serviceList.Any())
+        {
+            <select name="service-selector" id="service-selector">
+                @foreach (var item in serviceList)
+                {
+                    var service = item.Content.Value("item");
+                    <option value="@service">@service</option>
+                }
+            </select>
+        }
+
+        @if (messageBox == true)
+        {
+            <textarea id="message" name="message" placeholder="Message" value=""></textarea>
+        }
+    </div>
+    <button class="btn btn-@buttonColorLabel@(fullWidthButton ? " full-width" : "")" type="submit">Submit</button>
+</form>

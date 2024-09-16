@@ -10,6 +10,10 @@ h1, h2, h4, h5{
     h1, h2, h4, h5{
         color: var(--color-light);
     }
+
+    h3{
+        color: var(--color-accent);
+    }
 }
 
 h2 {

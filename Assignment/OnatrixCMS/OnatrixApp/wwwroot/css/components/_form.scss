@@ -1,0 +1,21 @@
+form {
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+        gap: 20px;
+
+        @include px768 {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .form-list-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        display: block;
+        margin: auto;
+        margin-top: 20px;
+    }
+}

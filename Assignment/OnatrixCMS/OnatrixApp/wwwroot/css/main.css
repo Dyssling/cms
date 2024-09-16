@@ -175,8 +175,11 @@ img {
   padding-left: 32px;
 }
 
-.container-padding-top-bottom {
+.container-padding-top {
   padding-top: 32px;
+}
+
+.container-padding-bottom {
   padding-bottom: 32px;
 }
 
@@ -588,6 +591,25 @@ section .section-container {
 .contact-info .container .contact-info-content .info-container div .info-label {
   font-weight: 700;
   margin-bottom: 6px;
+}
+
+form .form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 20px;
+}
+@media (max-width: 768px) {
+  form .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+form .form-list-layout {
+  grid-template-columns: 1fr;
+}
+form .btn {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
 }
 
 .question-form {
