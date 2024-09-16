@@ -18,6 +18,7 @@
     var officePhone = settings?.Value<string>("officePhone") ?? null;
 	var officeEmail = settings?.Value<string>("officeEmail") ?? null;
     var contactImage = settings?.Value<IPublishedContent>("imageForContactInfo")?.Url() ?? null;
+	var contactText = settings?.Value<string>("headerForContactInfo") ?? null;
 }
 	<section class="page-top bg-gray">
 		<h1>@Model.Name</h1>
@@ -69,7 +70,10 @@
                     <img src="@contactImage" alt="">
                 }
                 <div class="contact-info-content">
-                    <h2>Let us know about your next project</h2>
+				@if (!contactText.IsNullOrWhiteSpace())
+				{
+					<h2>@contactText</h2>
+				}
                     @if (!officeLocation.IsNullOrWhiteSpace()){
                         <div class="info-container">
                             <i class="fa-regular fa-location-dot"></i>
