@@ -22,39 +22,98 @@
     }
 }
 
-<form method="get" novalidate>
+@using (Html.BeginUmbracoForm("HandleSubmit", "Form", FormMethod.Post))
+{
     <div class="form-grid@(listLayout ? " form-list-layout" : "")">
         @if (nameField == true)
         {
-            <input type="text" id="name" name="name" placeholder="Name" value="">
+            var nameValue = ViewData["NameValue"] ?? "";
+            var nameError = ViewData["NameError"];
+
+            <div class="input-container">
+                <input type="text" id="name" name="name" placeholder="Name" value="@nameValue">
+
+                @if (nameError != null)
+                {
+                    <p class="form-error-msg">@nameError</p>
+                }
+
+            </div>
         }
 
         @if (emailField == true)
         {
-            <input type="email" id="email" name="email" placeholder="Email address" value="">
+            var emailValue = ViewData["EmailValue"] ?? "";
+            var emailError = ViewData["EmailError"];
 
+            <div class="input-container">
+                <input type="email" id="email" name="email" placeholder="Email address" value="@emailValue">
+
+                @if (emailError != null)
+                {
+                    <p class="form-error-msg">@ViewData["EmailError"]</p>
+                }
+
+            </div>
         }
 
         @if (phoneField == true)
         {
-            <input type="text" id="phone" name="phone" placeholder="Phone" value="">
+            var phoneValue = ViewData["PhoneValue"] ?? "";
+            var phoneError = ViewData["PhoneError"];
+
+            <div class="input-container">
+                <input type="text" id="phone" name="phone" placeholder="Phone" value="@phoneValue">
+
+                @if (phoneError != null)
+                {
+                    <p class="form-error-msg">@ViewData["PhoneError"]</p>
+                }
+
+            </div>
         }
 
         @if (serviceList.Any())
         {
-            <select name="service-selector" id="service-selector">
+            <select name="service" id="service">
                 @foreach (var item in serviceList)
                 {
-                    var service = item.Content.Value("item");
-                    <option value="@service">@service</option>
+                    var service = item.Content.Value("item")!.ToString();
+                    var selectedService = ViewData["ServiceValue"] ?? "";
+
+                    if (service == selectedService.ToString())
+                    {
+                        <option value="@service" selected="selected">@service</option>
+                    }
+
+                    else
+                    {
+                        <option value="@service">@service</option>
+                    }
                 }
             </select>
         }
 
         @if (messageBox == true)
         {
-            <textarea id="message" name="message" placeholder="Message" value=""></textarea>
+            var messageValue = ViewData["MessageValue"] ?? "";
+            var messageError = ViewData["MessageError"];
+
+            <div class="input-container">
+                <textarea id="message" name="message" placeholder="Message" value="@messageValue"></textarea>
+
+                @if (messageError != null)
+                {
+                    <p class="form-error-msg">@ViewData["MessageError"]</p>
+                }
+
+            </div>
         }
     </div>
-    <button class="btn btn-@buttonColorLabel@(fullWidthButton ? " full-width" : "")" type="submit">Submit</button>
-</form>
+    <button class="btn btn-@buttonColorLabel@(fullWidthButton ? " full-width" : "")" type="submit" formnovalidate="formnovalidate">Submit</button>
+
+    @if (ViewData["SuccessMessage"] != null)
+    {
+        <p class="form-success-msg">@ViewData["SuccessMessage"]</p>
+    }
+}

@@ -611,6 +611,14 @@ form .btn {
   margin: auto;
   margin-top: 20px;
 }
+form .form-error-msg {
+  color: red;
+  margin-top: 10px;
+}
+form .form-success-msg {
+  color: green;
+  margin-top: 10px;
+}
 
 .question-form {
   margin-bottom: 76px;
