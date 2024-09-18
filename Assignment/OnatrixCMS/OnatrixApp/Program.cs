@@ -1,3 +1,6 @@
+using OnatrixApp.Helpers;
+using OnatrixApp.Services;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.CreateUmbracoBuilder()
@@ -5,6 +8,7 @@ builder.CreateUmbracoBuilder()
     .AddWebsite()
     .AddDeliveryApi()
     .AddComposers()
+    .AddMyDependencies()
     .Build();
 
 WebApplication app = builder.Build();

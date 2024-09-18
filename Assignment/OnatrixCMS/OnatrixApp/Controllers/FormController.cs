@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Messaging.ServiceBus;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using OnatrixApp.Models;
+using OnatrixApp.Services;
 using System.Text.RegularExpressions;
 using Umbraco.Cms.Core.Cache;
+using Umbraco.Cms.Core.Configuration.Models;
 using Umbraco.Cms.Core.Logging;
 using Umbraco.Cms.Core.Routing;
 using Umbraco.Cms.Core.Services;
@@ -13,11 +17,13 @@ namespace OnatrixApp.Controllers
 {
     public class FormController : SurfaceController
     {
-        public FormController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
+        private readonly ServiceBusService _serviceBusService;
+        public FormController(ServiceBusService serviceBusService, IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
         {
+            _serviceBusService = serviceBusService;
         }
 
-        public IActionResult HandleSubmit(CustomForm customForm)
+        public async Task<IActionResult> HandleSubmit(CustomForm customForm)
         {
             var name = customForm.Name ?? null;
             var email = customForm.Email ?? null;
@@ -64,8 +70,22 @@ namespace OnatrixApp.Controllers
 
             else
             {
-                ViewData["SuccessMessage"] = "Thank you! We will get back to you shortly.";
+                ViewData["SuccessMessage"] = "Thank you! A confirmation has been sent to your email.";
 
+                if (email != null)
+                {
+                    var emailRequestModel = new EmailRequestModel()
+                    {
+                        To = email,
+                        Subject = "A Message from Onatrix",
+                        HtmlContent = $"<html><body><h1>Thank you {name ?? ""}!</h1><p>We have received your message, and we will get back to you shortly!</p></body></html>",
+                        PlainText = $"Thank you {name ?? ""}! We have received your message, and we will get back to you shortly!"
+                    };
+
+                    var serviceBusMessage = JsonConvert.SerializeObject(emailRequestModel);
+
+                    await _serviceBusService.PublishAsync(serviceBusMessage);
+                }
                 return CurrentUmbracoPage();
             }
 
