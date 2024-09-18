@@ -1,0 +1,12 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var number = Model.Content.Value<string>("number");
+    var text = Model.Content.Value<string>("text");
+}
+
+<div class="number-and-text-container">
+    <p><span>@number</span>@text</p>
+</div>

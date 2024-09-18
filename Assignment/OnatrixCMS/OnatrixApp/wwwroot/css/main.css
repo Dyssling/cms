@@ -104,6 +104,7 @@ h6 {
 img {
   overflow: hidden;
   display: block;
+  max-width: 100%;
 }
 
 .full-width {
@@ -691,6 +692,25 @@ form .form-success-msg {
 }
 .service-grid .grid-container img {
   width: 100%;
+}
+
+.number-and-text-container {
+  max-width: 320px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.number-and-text-container p {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+.number-and-text-container p span {
+  font-size: 100px;
+  color: var(--color-secondary);
+  display: block;
+  line-height: 125px;
 }
 
 header {

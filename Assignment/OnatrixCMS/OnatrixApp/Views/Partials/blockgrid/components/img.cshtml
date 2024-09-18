@@ -8,7 +8,7 @@
     var alt = Model.Content.Value<string>("imageDescription");
     var center = Model.Content.Value<bool>("alignToCenter");
 
-    var classString = $"full-width{(center ? " margin-auto" : "")}";
+    var classString = $"{(center ? "margin-auto" : "")}";
 
     classString = classString.Trim();
 }
