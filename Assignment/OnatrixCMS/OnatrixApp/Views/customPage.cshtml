@@ -5,6 +5,15 @@
 	Layout = "mainLayout.cshtml";
 
 	ViewBag.Title = Model.Value("pageTitle");
+
+	var includeBreadcrumbs = Model.Value<bool>("includeBreadcrumbs");
+}
+
+@if (includeBreadcrumbs){
+    <section class="page-top bg-gray">
+        <h1>@Model.Value("pageTitle")</h1>
+        @await Html.PartialAsync("partials/static/breadcrumbs.cshtml")
+    </section>
 }
 
 @await Html.GetBlockGridHtmlAsync(Model.Content)
