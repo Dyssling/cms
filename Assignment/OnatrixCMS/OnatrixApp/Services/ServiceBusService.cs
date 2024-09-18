@@ -8,11 +8,10 @@ namespace OnatrixApp.Services
         private readonly ServiceBusClient _client;
         private readonly ServiceBusSender _sender;
 
-        public ServiceBusService()
+        public ServiceBusService(IConfiguration configuration)
         {
-            _client = new ServiceBusClient("");
-            _sender = _client.CreateSender("");
-
+            _client = new ServiceBusClient(configuration.GetSection("ServiceBusConnection").Value);
+            _sender = _client.CreateSender(configuration.GetSection("ServiceBusQueue").Value);
         }
 
         public async Task PublishAsync(string message)
