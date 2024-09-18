@@ -36,14 +36,28 @@
 						@aboutUsText
 					</p>
 				}
-				<form class="support-box bg-primary" method="get" novalidate>
-					<h5>How can we help you?</h5>
-					<p class="support-text">online support 24/7, we are here to help you</p>
-					<div class="input-container">
-						<input type="email" id="email" name="email" placeholder="E-mail address">
-						<button class="btn"><i class="fa-regular fa-envelope"></i></button>
-					</div>
-				</form>
+            @using (Html.BeginUmbracoForm("HandleSupportBoxSubmit", "Form", FormMethod.Post))
+            {
+                var supportBoxEmailValue = ViewData["SupportBoxEmailValue"] ?? "";
+                var supportBoxEmailError = ViewData["SupportBoxEmailError"];
+
+                <div class="support-box bg-primary">
+                    <h5>How can we help you?</h5>
+                    <p class="support-text">online support 24/7, we are here to help you</p>
+                    <div class="input-container">
+                        <input type="email" id="supportBoxEmail" name="supportBoxEmail" placeholder="Email address" value="@supportBoxEmailValue">
+                        <button type="submit" class="btn" formnovalidate="formnovalidate"><i class="fa-regular fa-envelope"></i></button>
+                    </div>
+                    @if (supportBoxEmailError != null)
+                    {
+                        <p class="form-error-msg">@ViewData["SupportBoxEmailError"]</p>
+                    }
+                    @if (ViewData["SupportBoxSuccessMessage"] != null)
+                    {
+                        <p class="form-success-msg">@ViewData["SupportBoxSuccessMessage"]</p>
+                    }
+                </div>
+            }
 			</aside>
 			<article>
 				@await Html.GetBlockGridHtmlAsync(Model.Content)
@@ -53,14 +67,50 @@
 	<section class="question-form">
 		<div class="container">
 			<h4>Have a question?</h4>
-			<form method="get" novalidate>
-				<div class="grid">
-					<input type="text" id="name" name="name" placeholder="Name">
-					<input type="email" id="email" name="email" placeholder="Email">
-					<textarea id="question" name="question" placeholder="Question"></textarea>
-				</div>
-				<button class="btn btn-primary">Submit</button>
-			</form>
+        @using (Html.BeginUmbracoForm("HandleSubmit", "Form", FormMethod.Post))
+        {
+            var nameValue = ViewData["NameValue"] ?? "";
+            var nameError = ViewData["NameError"];
+            var emailValue = ViewData["EmailValue"] ?? "";
+            var emailError = ViewData["EmailError"];
+            var messageValue = ViewData["MessageValue"] ?? "";
+            var messageError = ViewData["MessageError"];
+
+            <div class="grid">
+                <div class="input-container">
+                    <input type="text" id="name" name="name" placeholder="Name" value="@nameValue">
+
+                    @if (nameError != null)
+                    {
+                        <p class="form-error-msg">@nameError</p>
+                    }
+
+                </div>
+                <div class="input-container">
+                    <input type="email" id="email" name="email" placeholder="Email address" value="@emailValue">
+
+                    @if (emailError != null)
+                    {
+                        <p class="form-error-msg">@ViewData["EmailError"]</p>
+                    }
+
+                </div>
+                <div class="input-container span-2">
+                    <textarea id="message" name="message" placeholder="Question" value="@messageValue"></textarea>
+
+                    @if (messageError != null)
+                    {
+                        <p class="form-error-msg">@ViewData["MessageError"]</p>
+                    }
+
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" formnovalidate="formnovalidate">Submit</button>
+            @if (ViewData["SuccessMessage"] != null)
+            {
+                <p class="form-success-msg">@ViewData["SuccessMessage"]</p>
+            }
+        }
 		</div>
 	</section>
 	<section class="contact-info bg-gray">

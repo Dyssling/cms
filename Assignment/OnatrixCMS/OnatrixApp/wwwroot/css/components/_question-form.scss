@@ -13,14 +13,17 @@
                     display: block;
                 }
 
-                input, textarea {
+                .input-container {
                     @include px768 {
                         margin: 12px 0;
                     }
                 }
 
-                textarea {
+                .span-2 {
                     grid-column: span 2;
+                }
+
+                textarea {
                     height: 175px;
                 }
             }

@@ -512,9 +512,14 @@ section .section-container {
   right: 0;
   top: 0;
   bottom: 0;
+  height: 100%;
+  margin: 0;
 }
 .support-box .input-container .btn:hover {
   background-color: var(--color-border-gray);
+}
+.support-box .form-success-msg {
+  color: var(--color-light);
 }
 
 .contact-info .container {
@@ -635,12 +640,14 @@ form .form-success-msg {
   }
 }
 @media (max-width: 768px) {
-  .question-form .container form .grid input, .question-form .container form .grid textarea {
+  .question-form .container form .grid .input-container {
     margin: 12px 0;
   }
 }
-.question-form .container form .grid textarea {
+.question-form .container form .grid .span-2 {
   grid-column: span 2;
+}
+.question-form .container form .grid textarea {
   height: 175px;
 }
 @media (max-width: 768px) {

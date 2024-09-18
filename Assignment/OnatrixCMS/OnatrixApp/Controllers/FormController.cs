@@ -90,5 +90,47 @@ namespace OnatrixApp.Controllers
             }
 
         }
+
+        public async Task<IActionResult> HandleSupportBoxSubmit(SupportBoxForm supportBoxForm)
+        {
+            var email = supportBoxForm.SupportBoxEmail;
+
+            bool isValid = true;
+
+            if (!Regex.IsMatch(email, "^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,})+$") || email.Length == 0)
+            {
+                isValid = false;
+                ViewData["SupportBoxEmailError"] = "Please enter a valid email address.";
+            }
+
+            if (!isValid)
+            {
+                ViewData["SupportBoxEmailValue"] = email;
+
+                return CurrentUmbracoPage();
+            }
+
+            else
+            {
+                ViewData["SupportBoxSuccessMessage"] = "Thank you! A confirmation has been sent to your email.";
+
+                if (email != null)
+                {
+                    var emailRequestModel = new EmailRequestModel()
+                    {
+                        To = email,
+                        Subject = "A Message from Onatrix",
+                        HtmlContent = $"<html><body><h1>Thank you!</h1><p>We have received your request, and we will get back to you shortly!</p></body></html>",
+                        PlainText = $"Thank you! We have received your request, and we will get back to you shortly!"
+                    };
+
+                    var serviceBusMessage = JsonConvert.SerializeObject(emailRequestModel);
+
+                    await _serviceBusService.PublishAsync(serviceBusMessage);
+                }
+                return CurrentUmbracoPage();
+            }
+
+        }
     }
 }

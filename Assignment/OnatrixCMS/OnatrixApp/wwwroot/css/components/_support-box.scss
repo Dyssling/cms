@@ -33,9 +33,17 @@
             top: 0;
             bottom: 0;
 
+            height: 100%;
+
+            margin: 0;
+
             &:hover {
                 background-color: var(--color-border-gray);
             }
         }
+    }
+
+    .form-success-msg{
+        color: var(--color-light);
     }
 }
