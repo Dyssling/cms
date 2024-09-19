@@ -1,21 +1,22 @@
 .container{
-    width: 1170px;
+    width: 100%;
+    max-width: 1170px;
     margin: auto;
 
     @include px1400{
-        width: 950px;
+        max-width: 950px;
     }
 
     @include px1200{
-        width: 800px;
+        max-width: 800px;
     }
 
     @include px992{
-        width: 650px;
+        max-width: 650px;
     }
 
     @include px768{
-        width: 100%;
+        max-width: 100%;
 
         padding: 0 3%;
     }
