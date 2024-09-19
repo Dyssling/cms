@@ -292,27 +292,29 @@ select {
   }
 }
 section .section-container {
-  width: 1170px;
+  width: 100%;
+  max-width: 1170px;
   margin: auto;
 }
 @media (max-width: 1400px) {
   section .section-container {
-    width: 950px;
+    max-width: 950px;
   }
 }
 @media (max-width: 1200px) {
   section .section-container {
-    width: 800px;
+    max-width: 800px;
   }
 }
 @media (max-width: 992px) {
   section .section-container {
-    width: 650px;
+    max-width: 650px;
   }
 }
 @media (max-width: 768px) {
   section .section-container {
     width: 100%;
+    max-width: none;
     padding: 0 3%;
   }
 }
@@ -443,6 +445,17 @@ section .section-container {
 }
 .date i {
   margin: 0 6px 2px 0;
+}
+
+.container-with-sidebar {
+  display: flex;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+@media (max-width: 768px) {
+  .container-with-sidebar {
+    flex-direction: column;
+  }
 }
 
 .sidebar {

@@ -7,6 +7,8 @@
 	ViewBag.Title = Model.Value("pageTitle");
 
 	var includeBreadcrumbs = Model.Value<bool>("includeBreadcrumbs");
+    var includeSidebar = Model.Value<bool>("includeSidebar");
+    var includeContactInfo = Model.Value<bool>("includeContactInfo");
 }
 
 @if (includeBreadcrumbs){
@@ -16,4 +18,22 @@
     </section>
 }
 
-@await Html.GetBlockGridHtmlAsync(Model.Content)
+@if (includeSidebar)
+{
+    <div class="container container-with-sidebar">
+        @await Html.GetBlockGridHtmlAsync(Model.Content)
+        @await Html.PartialAsync("partials/static/sidebar.cshtml")
+    </div>
+}
+
+else
+{
+    @await Html.GetBlockGridHtmlAsync(Model.Content)
+}
+
+@if (includeContactInfo)
+{
+    <section class="contact-info-section bg-gray">
+        @await Html.PartialAsync("partials/static/contactInfo.cshtml")
+    </section>
+}

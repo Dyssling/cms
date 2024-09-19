@@ -1,0 +1,40 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+
+}
+
+<aside class="sidebar">
+    <h5>Tags</h5>
+    <button class="btn tag-btn">Report</button>
+    <button class="btn tag-btn">Business plans</button>
+    <button class="btn tag-btn">Insights</button>
+    <button class="btn tag-btn">Business</button>
+    <button class="btn tag-btn">App</button>
+    <button class="btn tag-btn">Project</button>
+    <button class="btn tag-btn">Finance</button>
+    <button class="btn tag-btn">Pricing</button>
+    @using (Html.BeginUmbracoForm("HandleSupportBoxSubmit", "Form", FormMethod.Post))
+    {
+        var supportBoxEmailValue = ViewData["SupportBoxEmailValue"] ?? "";
+        var supportBoxEmailError = ViewData["SupportBoxEmailError"];
+
+        <div class="support-box bg-primary">
+            <h5>How can we help you?</h5>
+            <p class="support-text">online support 24/7, we are here to help you</p>
+            <div class="input-container">
+                <input type="email" id="supportBoxEmail" name="supportBoxEmail" placeholder="Email address" value="@supportBoxEmailValue">
+                <button type="submit" class="btn" formnovalidate="formnovalidate"><i class="fa-regular fa-envelope"></i></button>
+            </div>
+            @if (supportBoxEmailError != null)
+            {
+                <p class="form-error-msg">@ViewData["SupportBoxEmailError"]</p>
+            }
+            @if (ViewData["SupportBoxSuccessMessage"] != null)
+            {
+                <p class="form-success-msg">@ViewData["SupportBoxSuccessMessage"]</p>
+            }
+        </div>
+    }
+</aside>
