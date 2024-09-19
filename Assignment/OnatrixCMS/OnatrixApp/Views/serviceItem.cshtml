@@ -13,12 +13,6 @@
 
     var sidebarImgUrl = settings?.Value<IPublishedContent>("imageForSidebar")?.Url() ?? null;
     var aboutUsText = settings?.Value<string>("shortDescriptionOfTheCompany") ?? null;
-    
-    var officeLocation = settings?.Value<string>("officeLocation") ?? null;
-    var officePhone = settings?.Value<string>("officePhone") ?? null;
-	var officeEmail = settings?.Value<string>("officeEmail") ?? null;
-    var contactImage = settings?.Value<IPublishedContent>("imageForContactInfo")?.Url() ?? null;
-	var contactText = settings?.Value<string>("headerForContactInfo") ?? null;
 }
 	<section class="page-top bg-gray">
 		<h1>@Model.Name</h1>
@@ -113,45 +107,6 @@
         }
 		</div>
 	</section>
-	<section class="contact-info bg-gray">
-		<div class="container">
-			@if (!officeLocation.IsNullOrWhiteSpace() || !officePhone.IsNullOrWhiteSpace() || !officeEmail.IsNullOrWhiteSpace()){
-				@if (!contactImage.IsNullOrWhiteSpace()){
-                    <img src="@contactImage" alt="">
-                }
-                <div class="contact-info-content">
-				@if (!contactText.IsNullOrWhiteSpace())
-				{
-					<h2>@contactText</h2>
-				}
-                    @if (!officeLocation.IsNullOrWhiteSpace()){
-                        <div class="info-container">
-                            <i class="fa-regular fa-location-dot"></i>
-                            <div>
-                                <p class="info-label">Office location</p>
-                                <p class="info-text">Klarabergsviadukten 90, 111 52 Stockholm</p>
-                            </div>
-                        </div>
-                    }
-                    @if (!officePhone.IsNullOrWhiteSpace()){
-                        <div class="info-container">
-                            <i class="fa-regular fa-phone"></i>
-                            <div>
-                                <p class="info-label">Phone number</p>
-                                <p class="info-text">+46 8 123 456 75</p>
-                            </div>
-                        </div>
-                    }
-                    @if (!officeEmail.IsNullOrWhiteSpace()){
-                        <div class="info-container">
-                            <i class="fa-regular fa-envelope"></i>
-                            <div>
-                                <p class="info-label">E-mail address</p>
-                                <p class="info-text">sales@onatrix.com</p>
-                            </div>
-                        </div>
-                    }
-			    </div>
-			}
-		</div>
-	</section>
+    <section class="contact-info-section bg-gray">
+        @await Html.PartialAsync("partials/static/contactInfo.cshtml")
+    </section>

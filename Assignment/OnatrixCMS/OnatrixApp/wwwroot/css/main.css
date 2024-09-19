@@ -544,78 +544,78 @@ section .section-container {
   color: var(--color-light);
 }
 
-.contact-info .container {
+.contact-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
 }
 @media (max-width: 1200px) {
-  .contact-info .container {
+  .contact-info {
     width: 100%;
   }
 }
 @media (max-width: 768px) {
-  .contact-info .container {
+  .contact-info {
     display: block;
     padding-top: 40px;
     padding-bottom: 40px;
   }
 }
-.contact-info .container img {
+.contact-info img {
   width: 100%;
 }
 @media (max-width: 768px) {
-  .contact-info .container img {
+  .contact-info img {
     display: none;
   }
 }
-.contact-info .container .contact-info-content {
+.contact-info .contact-info-content {
   padding-left: 20%;
 }
 @media (max-width: 1200px) {
-  .contact-info .container .contact-info-content {
+  .contact-info .contact-info-content {
     padding: 0 5%;
   }
 }
-.contact-info .container .contact-info-content h2 {
+.contact-info .contact-info-content h2 {
   margin-bottom: 28px;
 }
 @media (max-width: 992px) {
-  .contact-info .container .contact-info-content h2 {
+  .contact-info .contact-info-content h2 {
     font-size: 35px;
   }
 }
 @media (max-width: 768px) {
-  .contact-info .container .contact-info-content h2 {
+  .contact-info .contact-info-content h2 {
     text-align: center;
   }
 }
-.contact-info .container .contact-info-content .info-container {
+.contact-info .contact-info-content .info-container {
   display: flex;
 }
 @media (max-width: 768px) {
-  .contact-info .container .contact-info-content .info-container {
+  .contact-info .contact-info-content .info-container {
     display: block;
     text-align: center;
   }
 }
-.contact-info .container .contact-info-content .info-container i {
+.contact-info .contact-info-content .info-container i {
   color: var(--color-secondary);
   font-size: 20px;
   width: 22px;
   text-align: center;
 }
-.contact-info .container .contact-info-content .info-container div {
+.contact-info .contact-info-content .info-container div {
   font-size: 14px;
   margin-left: 8px;
   margin-bottom: 36px;
 }
 @media (max-width: 1200px) {
-  .contact-info .container .contact-info-content .info-container div {
+  .contact-info .contact-info-content .info-container div {
     margin-bottom: 24px;
   }
 }
-.contact-info .container .contact-info-content .info-container div .info-label {
+.contact-info .contact-info-content .info-container div .info-label {
   font-weight: 700;
   margin-bottom: 6px;
 }
@@ -789,6 +789,91 @@ form .form-success-msg {
 }
 .projects-grid .grid-container:hover .project-content i {
   display: flex;
+}
+
+.projects-list {
+  padding-right: 6%;
+  border-right: 1px solid var(--color-border-gray);
+}
+@media (max-width: 768px) {
+  .projects-list {
+    padding: 0;
+    border: none;
+  }
+}
+.projects-list .project-container {
+  display: flex;
+  align-items: start;
+  border-bottom: 1px solid var(--color-border-gray);
+  padding: 24px 0;
+}
+@media (max-width: 1200px) {
+  .projects-list .project-container {
+    display: block;
+  }
+}
+.projects-list .project-container:nth-last-child(1 of .project-container) {
+  border: none;
+}
+.projects-list .project-container img {
+  width: 100%;
+  margin-right: 25px;
+}
+@media (max-width: 1200px) {
+  .projects-list .project-container img {
+    margin-bottom: 20px;
+  }
+}
+.projects-list .project-container .project-content {
+  width: 100%;
+}
+.projects-list .project-container .project-content h5 {
+  color: var(--color-primary);
+}
+.projects-list .project-container .project-content .date {
+  display: flex;
+  align-items: center;
+  color: var(--color-dark-gray);
+}
+.projects-list .project-container .project-content .date i {
+  margin: 0 6px 2px 0;
+}
+.projects-list .project-container .project-content .date, .projects-list .project-container .project-content .project-text, .projects-list .project-container .project-content a {
+  font-size: 14px;
+}
+.projects-list .project-container .project-content .project-text {
+  margin: 14px 0 30px 0;
+}
+.projects-list .project-container .project-content a {
+  font-weight: 600;
+}
+.projects-list .project-container .project-content a:hover {
+  text-decoration: underline;
+}
+.projects-list .project-container .project-content a i {
+  font-size: 12px;
+  color: var(--color-secondary);
+  margin-left: 6px;
+}
+
+.pagination {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pagination .btn {
+  background-color: transparent;
+  border: none;
+  padding: 15px;
+  min-width: 54px;
+  min-height: 54px;
+  margin: 0 3px;
+  outline: transparent;
+  text-align: center;
+}
+.pagination .number {
+  border-radius: 50%;
 }
 
 header {

@@ -1,0 +1,60 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper;
+
+@{
+    var rootContent = UmbracoHelper.ContentAtRoot();
+    var settings = rootContent?.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
+
+    var officeLocation = settings?.Value<string>("officeLocation") ?? null;
+    var officePhone = settings?.Value<string>("officePhone") ?? null;
+    var officeEmail = settings?.Value<string>("officeEmail") ?? null;
+    var contactImage = settings?.Value<IPublishedContent>("imageForContactInfo")?.Url() ?? null;
+    var contactText = settings?.Value<string>("headerForContactInfo") ?? null;
+}
+
+<div class="container contact-info">
+    @if (!officeLocation.IsNullOrWhiteSpace() || !officePhone.IsNullOrWhiteSpace() || !officeEmail.IsNullOrWhiteSpace())
+    {
+        @if (!contactImage.IsNullOrWhiteSpace())
+        {
+            <img src="@contactImage" alt="">
+        }
+        <div class="contact-info-content">
+            @if (!contactText.IsNullOrWhiteSpace())
+            {
+                <h2>@contactText</h2>
+            }
+            @if (!officeLocation.IsNullOrWhiteSpace())
+            {
+                <div class="info-container">
+                    <i class="fa-regular fa-location-dot"></i>
+                    <div>
+                        <p class="info-label">Office location</p>
+                        <p class="info-text">Klarabergsviadukten 90, 111 52 Stockholm</p>
+                    </div>
+                </div>
+            }
+            @if (!officePhone.IsNullOrWhiteSpace())
+            {
+                <div class="info-container">
+                    <i class="fa-regular fa-phone"></i>
+                    <div>
+                        <p class="info-label">Phone number</p>
+                        <p class="info-text">+46 8 123 456 75</p>
+                    </div>
+                </div>
+            }
+            @if (!officeEmail.IsNullOrWhiteSpace())
+            {
+                <div class="info-container">
+                    <i class="fa-regular fa-envelope"></i>
+                    <div>
+                        <p class="info-label">E-mail address</p>
+                        <p class="info-text">sales@onatrix.com</p>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

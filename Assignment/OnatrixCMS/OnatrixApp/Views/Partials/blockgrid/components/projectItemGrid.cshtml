@@ -8,35 +8,43 @@
 	var numberOfItems = Model.Content.Value<int>("numberOfItems");
 	var style = Model.Content.Value<string>("style");
 
-	IEnumerable<IPublishedContent>? selection = null;
+	var includePagination = Model.Content.Value<bool>("includePagination");
 
-	if (numberOfItems != 0)
-	{
-		selection = Umbraco.Content(parentId)?
+	if (!int.TryParse(Context.Request.Query["page"], out int currentPage))
+	{ //Försök hämta page-numret och lagra den i currentPage. Om den misslyckas blir currentPage = 1.
+		currentPage = 1;
+	}
+
+	var selection = Umbraco.Content(parentId)?
 		.ChildrenOfType("projectItem")?
-		.Where(x => x.IsVisible())
-		.Take(numberOfItems);
+		.Where(x => x.IsVisible());
+
+	var totalItems = selection?.Count() ?? 0;
+	IEnumerable<IPublishedContent>? pagedItems = null!;
+
+	if (numberOfItems == 0)
+	{
+		pagedItems = selection;
 	}
 
 	else
 	{
-		selection = Umbraco.Content(parentId)?
-		.ChildrenOfType("projectItem")?
-		.Where(x => x.IsVisible());
+		pagedItems = selection?.Skip((currentPage - 1) * numberOfItems).Take(numberOfItems); //Hämta de serviceGridItems som kommer efter föregående sida (alltså skippa dem), och hämta samma mängden som man har ställt in med numberOfItems
 	}
 
 	
 
 }
 
-@if (selection != null && style=="Grid style")
+@if (pagedItems != null && style=="Grid style")
 {
 	<div class="projects-grid">
-		@foreach (var item in selection)
+		@foreach (var item in pagedItems)
 		{
 			var thumbnailUrl = item.Value<IPublishedContent>("thumbnail")!.Url();
 			var date = item.Value<string>("date");
             var category = item.Value<string>("category");
+
 			<a class="grid-container" href="@item.Url()">
 				<div class="img-container">
 					<img src="@thumbnailUrl" alt="Project image">
@@ -47,6 +55,61 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </div>
 			</a>
+		}
+	</div>
+}
+
+@if (pagedItems != null && style == "List style")
+{
+	<div class="projects-list">
+		@foreach (var item in pagedItems)
+		{
+			var thumbnailUrl = item.Value<IPublishedContent>("thumbnail")!.Url();
+			var date = item.Value<string>("date");
+			var intro = item.Value<string>("shortIntroText");
+
+			<div class="project-container">
+				<img src="@thumbnailUrl" alt="Project image">
+				<div class="project-content">
+					<h5>@item.Name</h5>
+					<div class="date">
+						<i class="fa-regular fa-calendar-days"></i>
+						<p>@date</p>
+					</div>
+					<p class="project-text">@intro</p>
+					<a href="@item.Url()">Read more <i class="fa-solid fa-arrow-right"></i></a>
+				</div>
+			</div>
+		}
+	</div>
+}
+
+@if (pagedItems != null && includePagination)
+{
+	<div class="pagination">
+		@if (currentPage > 1)
+		{
+			<a class="btn prev-next" href="?page=@(currentPage - 1)">Prev</a>
+		}
+
+		else
+		{
+			<a class="btn prev-next none">Prev</a>
+		}
+
+		@for (int i = 1; i <= Math.Ceiling((decimal)totalItems / numberOfItems); i++)
+		{
+			<a class="btn number@((i == currentPage) ? " active" : "")" href="?page=@i">@i</a>
+		}
+
+		@if (currentPage < (Math.Ceiling((decimal)totalItems / numberOfItems)))
+		{
+			<a class="btn prev-next" href="?page=@(currentPage + 1)">Next</a>
+		}
+
+		else
+		{
+			<a class="btn prev-next none">Next</a>
 		}
 	</div>
 }

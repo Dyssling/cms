@@ -6,32 +6,34 @@
 	var parentId = Model.Content.Value<IPublishedContent>("serviceItemParent")!.Id;
 
 	var numberOfItems = Model.Content.Value<int>("numberOfItems");
+	var includePagination = Model.Content.Value<bool>("includePagination");
 
-	IEnumerable<IPublishedContent>? selection = null;
+	if (!int.TryParse(Context.Request.Query["page"], out int currentPage)){ //Försök hämta page-numret och lagra den i currentPage. Om den misslyckas blir currentPage = 1.
+		currentPage = 1;
+	}
 
-	if (numberOfItems != 0)
-	{
-		selection = Umbraco.Content(parentId)?
+	var selection = Umbraco.Content(parentId)?
 		.ChildrenOfType("serviceItem")?
-		.Where(x => x.IsVisible())
-		.Take(numberOfItems);
+		.Where(x => x.IsVisible());
+
+	var totalItems = selection?.Count() ?? 0;
+	IEnumerable<IPublishedContent>? pagedItems = null!;
+
+	if (numberOfItems == 0)
+	{
+		pagedItems = selection;
 	}
 
 	else
 	{
-		selection = Umbraco.Content(parentId)?
-		.ChildrenOfType("serviceItem")?
-		.Where(x => x.IsVisible());
+		pagedItems = selection?.Skip((currentPage - 1) * numberOfItems).Take(numberOfItems); //Hämta de serviceGridItems som kommer efter föregående sida (alltså skippa dem), och hämta samma mängden som man har ställt in med numberOfItems
 	}
-
-	
-
 }
 
-@if (selection != null)
+@if (pagedItems != null)
 {
 	<div class="service-grid">
-		@foreach (var item in selection)
+		@foreach (var item in pagedItems)
 		{
 			var thumbnailUrl = item.Value<IPublishedContent>("thumbnail")!.Url();
 			var intro = item.Value<string>("shortIntro");
@@ -48,4 +50,32 @@
 			</a>
 		}
 	</div>
+	@if (includePagination)
+	{
+		<div class="pagination">
+			@if (currentPage > 1){
+				<a class="btn prev-next" href="?page=@(currentPage - 1)">Prev</a>
+			}
+
+			else
+			{
+				<a class="btn prev-next none">Prev</a>
+			}
+	
+			@for (int i = 1; i <= Math.Ceiling((decimal)totalItems / numberOfItems); i++)
+			{
+				<a class="btn number@((i == currentPage) ? " active" : "")" href="?page=@i">@i</a>
+			}
+
+			@if (currentPage < (Math.Ceiling((decimal)totalItems / numberOfItems)))
+			{
+				<a class="btn prev-next" href="?page=@(currentPage + 1)">Next</a>
+			}
+
+			else
+			{
+				<a class="btn prev-next none">Next</a>
+			}
+		</div>
+	}
 }
