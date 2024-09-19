@@ -5,16 +5,18 @@
 
 @{
     bool paddingTopAndBottom = Model.Content.Value<bool>("paddingTopAndBottom");
+    bool paddingSides = Model.Content.Value<bool>("paddingSides");
     bool shadow = Model.Content.Value<bool>("shadow");
 
-    var bgColorLabel = "";
+    var bgColorClass = "";
+    var bgColorLabel = Model.Content.Value<ColorPickerValueConverter.PickedColor>("backgroundColor")?.Label ?? null!;
 
-    if (!(Model.Content.Value<ColorPickerValueConverter.PickedColor>("backgroundColor")?.Label).IsNullOrWhiteSpace())
+    if (!bgColorLabel.IsNullOrWhiteSpace())
     {
-        bgColorLabel = $" bg-{bgColorLabel.ToLower()}";
+        bgColorClass = $" bg-{bgColorLabel.ToLower()}";
     }
 
-    var classString = $"section-container{bgColorLabel}{(shadow ? " container-shadow" : "")}{(paddingTopAndBottom ? " container-padding-top-bottom" : "")}";
+    var classString = $"section-container{bgColorClass}{(shadow ? " container-shadow" : "")}{(paddingTopAndBottom ? " container-padding-top container-padding-bottom" : "")}{(paddingSides ? " container-padding-sides" : "")}";
 }
 
 <div class="@classString">
