@@ -1,0 +1,147 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ProjectItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper;
+
+@{
+
+    Layout = "mainLayout.cshtml";
+
+    ViewBag.Title = Model.Name;
+
+    var rootContent = UmbracoHelper.ContentAtRoot();
+    var settings = rootContent?.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
+
+    var officeLocation = settings?.Value<string>("officeLocation") ?? null;
+    var officePhone = settings?.Value<string>("officePhone") ?? null;
+    var officeEmail = settings?.Value<string>("officeEmail") ?? null;
+    var contactImage = settings?.Value<IPublishedContent>("imageForContactInfo")?.Url() ?? null;
+    var contactText = settings?.Value<string>("headerForContactInfo") ?? null;
+
+    var ancestor = Model.Ancestor();
+    var selection = Umbraco.Content(ancestor.Id)
+    .ChildrenOfType("projectItem")
+    .Where(x => x.IsVisible())
+    .Take(4);
+
+    var tags = Model.Value<IEnumerable<Umbraco.Cms.Core.Models.Blocks.BlockListItem>>("tags") ?? null;
+
+    var articleDate = Model.Value<string>("date");
+}
+	<section class="page-top bg-gray">
+		<h1>@Model.Name</h1>
+        @await Html.PartialAsync("partials/static/breadcrumbs.cshtml")
+	</section>
+	<section class="article-section">
+		<div class="container">
+			<article class="border-right">
+                <div class="date">
+                    <i class="fa-regular fa-calendar-days"></i>
+                    <p>@articleDate</p>
+                </div>
+				@await Html.GetBlockGridHtmlAsync(Model.Content)
+                @if (tags != null){
+                    <div class="article-tags">
+                        <p>Tags:</p>
+                        @foreach (var tag in tags){
+                            var tagValue = tag.Content.Value<string>("item");
+                            <a class="btn btn-secondary" href="#">@tagValue</a>
+                        }
+                    </div>
+                }
+			</article>
+            <aside class="sidebar">
+                <h5>Recent projects</h5>
+                <div class="recent-projects-list">
+                    @foreach (var item in selection){
+                        var thumbnailUrl = item.Value<IPublishedContent>("thumbnail")!.Url();
+                        var date = item.Value<string>("date");
+                        
+                        <a class="recent-project-container" href="item.Url()">
+                            <img src="@thumbnailUrl" alt="@item.Name">
+                            <div class="recent-project-content">
+                                <p class="recent-project-title">@item.Name</p>
+                                <div class="date">
+                                    <i class="fa-regular fa-calendar-days"></i>
+                                    <p>@date</p>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+                <h5>Tags</h5>
+                <button class="btn tag-btn">Report</button>
+                <button class="btn tag-btn">Business plans</button>
+                <button class="btn tag-btn">Insights</button>
+                <button class="btn tag-btn">Business</button>
+                <button class="btn tag-btn">App</button>
+                <button class="btn tag-btn">Project</button>
+                <button class="btn tag-btn">Finance</button>
+                <button class="btn tag-btn">Pricing</button>
+                @using (Html.BeginUmbracoForm("HandleSupportBoxSubmit", "Form", FormMethod.Post))
+                {
+                    var supportBoxEmailValue = ViewData["SupportBoxEmailValue"] ?? "";
+                    var supportBoxEmailError = ViewData["SupportBoxEmailError"];
+
+                    <div class="support-box bg-primary">
+                        <h5>How can we help you?</h5>
+                        <p class="support-text">online support 24/7, we are here to help you</p>
+                        <div class="input-container">
+                            <input type="email" id="supportBoxEmail" name="supportBoxEmail" placeholder="Email address" value="@supportBoxEmailValue">
+                            <button type="submit" class="btn" formnovalidate="formnovalidate"><i class="fa-regular fa-envelope"></i></button>
+                        </div>
+                        @if (supportBoxEmailError != null)
+                        {
+                            <p class="form-error-msg">@ViewData["SupportBoxEmailError"]</p>
+                        }
+                        @if (ViewData["SupportBoxSuccessMessage"] != null)
+                        {
+                            <p class="form-success-msg">@ViewData["SupportBoxSuccessMessage"]</p>
+                        }
+                    </div>
+                }
+			</aside>
+		</div>
+	</section>
+	<section class="contact-info bg-gray">
+		<div class="container">
+			@if (!officeLocation.IsNullOrWhiteSpace() || !officePhone.IsNullOrWhiteSpace() || !officeEmail.IsNullOrWhiteSpace()){
+				@if (!contactImage.IsNullOrWhiteSpace()){
+                    <img src="@contactImage" alt="">
+                }
+                <div class="contact-info-content">
+				@if (!contactText.IsNullOrWhiteSpace())
+				{
+					<h2>@contactText</h2>
+				}
+                    @if (!officeLocation.IsNullOrWhiteSpace()){
+                        <div class="info-container">
+                            <i class="fa-regular fa-location-dot"></i>
+                            <div>
+                                <p class="info-label">Office location</p>
+                                <p class="info-text">Klarabergsviadukten 90, 111 52 Stockholm</p>
+                            </div>
+                        </div>
+                    }
+                    @if (!officePhone.IsNullOrWhiteSpace()){
+                        <div class="info-container">
+                            <i class="fa-regular fa-phone"></i>
+                            <div>
+                                <p class="info-label">Phone number</p>
+                                <p class="info-text">+46 8 123 456 75</p>
+                            </div>
+                        </div>
+                    }
+                    @if (!officeEmail.IsNullOrWhiteSpace()){
+                        <div class="info-container">
+                            <i class="fa-regular fa-envelope"></i>
+                            <div>
+                                <p class="info-label">E-mail address</p>
+                                <p class="info-text">sales@onatrix.com</p>
+                            </div>
+                        </div>
+                    }
+			    </div>
+			}
+		</div>
+	</section>

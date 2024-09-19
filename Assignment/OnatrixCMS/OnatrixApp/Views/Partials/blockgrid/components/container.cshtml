@@ -4,7 +4,8 @@
 @using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
 
 @{
-    bool marginSides = Model.Content.Value<bool>("marginSides");
+    bool marginRight = Model.Content.Value<bool>("marginRight");
+    bool marginLeft = Model.Content.Value<bool>("marginLeft");
     bool marginTopAndBottom = Model.Content.Value<bool>("marginTopAndBottom");
     bool paddingSides = Model.Content.Value<bool>("paddingSides");
     bool paddingTop = Model.Content.Value<bool>("paddingTop");
@@ -20,7 +21,7 @@
         bgColorClass = $" bg-{bgColorLabel.ToLower()}";
     }
 
-    var classString = $"block-grid-container{bgColorClass}{(shadow ? " container-shadow" : "")}{(marginSides ? " container-margin-sides" : "")}{(marginTopAndBottom ? " container-margin-top-bottom" : "")}{(paddingSides ? " container-padding-sides" : "")}{(paddingTop ? " container-padding-top" : "")}{(paddingBottom ? " container-padding-bottom" : "")}";
+    var classString = $"block-grid-container{bgColorClass}{(shadow ? " container-shadow" : "")}{(marginRight ? " container-margin-right" : "")}{(marginLeft ? " container-margin-left" : "")}{(marginTopAndBottom ? " container-margin-top-bottom" : "")}{(paddingSides ? " container-padding-sides" : "")}{(paddingTop ? " container-padding-top" : "")}{(paddingBottom ? " container-padding-bottom" : "")}";
 }
 
 <div class="@classString">
