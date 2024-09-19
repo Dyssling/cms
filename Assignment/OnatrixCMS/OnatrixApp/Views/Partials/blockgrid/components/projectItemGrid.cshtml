@@ -66,7 +66,7 @@
 		{
 			var thumbnailUrl = item.Value<IPublishedContent>("thumbnail")!.Url();
 			var date = item.Value<string>("date");
-			var intro = item.Value<string>("shortIntroText");
+			var intro = item.Value<string>("shortIntro");
 
 			<div class="project-container">
 				<img src="@thumbnailUrl" alt="Project image">
