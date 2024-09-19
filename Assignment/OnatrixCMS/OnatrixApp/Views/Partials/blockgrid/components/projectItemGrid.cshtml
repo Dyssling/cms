@@ -1,0 +1,52 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+	var parentId = Model.Content.Value<IPublishedContent>("projectItemParent")!.Id;
+
+	var numberOfItems = Model.Content.Value<int>("numberOfItems");
+	var style = Model.Content.Value<string>("style");
+
+	IEnumerable<IPublishedContent>? selection = null;
+
+	if (numberOfItems != 0)
+	{
+		selection = Umbraco.Content(parentId)?
+		.ChildrenOfType("projectItem")?
+		.Where(x => x.IsVisible())
+		.Take(numberOfItems);
+	}
+
+	else
+	{
+		selection = Umbraco.Content(parentId)?
+		.ChildrenOfType("projectItem")?
+		.Where(x => x.IsVisible());
+	}
+
+	
+
+}
+
+@if (selection != null && style=="Grid style")
+{
+	<div class="projects-grid">
+		@foreach (var item in selection)
+		{
+			var thumbnailUrl = item.Value<IPublishedContent>("thumbnail")!.Url();
+			var date = item.Value<string>("date");
+            var category = item.Value<string>("category");
+			<a class="grid-container" href="@item.Url()">
+				<div class="img-container">
+					<img src="@thumbnailUrl" alt="Project image">
+				</div>
+                <div class="project-content bg-primary">
+                    <h6>@item.Name</h6>
+                    <p>@category</p>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+			</a>
+		}
+	</div>
+}

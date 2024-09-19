@@ -45,8 +45,11 @@
             }
 
             img {
-                width: 60%;
+                min-width: 130px;
+                max-width: 130px;
                 margin: 0;
+
+                height: 100%;
             }
 
             .recent-project-content {
